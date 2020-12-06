@@ -1,7 +1,7 @@
-function spawn_platforms(height) {
+function spawn_platforms(_height) {
 	
 }
 
-function move_platforms(length) {
+function move_platforms(_length) {
 	
 }

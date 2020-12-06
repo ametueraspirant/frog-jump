@@ -1,4 +1,4 @@
-function jump() {
+function jump(_force) {
 	
 }
 
