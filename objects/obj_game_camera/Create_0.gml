@@ -23,6 +23,7 @@ function window_set_size_ext(_cur) {
 	}
     var _size = global.res[$ _cur];
     window_set_size(_size[0], _size[1]);
+	surface_resize(application_surface, _size[0], _size[1]);
 }
 
 window_set_size_ext("540p");
