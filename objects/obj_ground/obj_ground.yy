@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_platform_test",
-    "path": "sprites/spr_platform_test/spr_platform_test.yy",
+    "name": "spr_ground_test",
+    "path": "sprites/spr_ground_test/spr_ground_test.yy",
   },
   "solid": false,
   "visible": true,
@@ -28,7 +28,7 @@
     "path": "folders/Objects/entities.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_platform",
+  "name": "obj_ground",
   "tags": [],
   "resourceType": "GMObject",
 }

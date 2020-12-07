@@ -18,8 +18,7 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_game_controller","path":"objects/obj_game_controller/obj_game_controller.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"obj_game_controller","path":"objects/obj_game_controller/obj_game_controller.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_collider_parent","path":"objects/obj_collider_parent/obj_collider_parent.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -28,7 +27,7 @@
     "path": "folders/Objects/system.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_game_controller",
+  "name": "obj_collider_parent",
   "tags": [],
   "resourceType": "GMObject",
 }
