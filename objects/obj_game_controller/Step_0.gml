@@ -1,10 +1,13 @@
 /// @description Run Game
 
 switch(_game_state) {
-	case "main":
+	case "menu":
 	switch(_menu_state) {
-		default:
+		case "main":
 		
+		break;
+		default:
+		show_debug_message("sorry that's not a menu I can find");
 		break;
 	}
 	break;
