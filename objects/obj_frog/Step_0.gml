@@ -1,3 +1,5 @@
+/// @description Move Frog
+
 //Jumping
 if place_meeting(x,y+1,obj_platform) and keyboard_check_pressed(vk_space)
     {

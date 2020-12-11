@@ -7,7 +7,7 @@
 #macro _main_layer "Instances"
 
 // main game states
-g_state = "menu"; // this will be set to the string menu, prep, go, and scores, and called by other objects.
+g_state = "menu"; // this will be set to the string menu, prep, go, death, and scores, and called by other objects.
 m_state = "main"; // this will be set to the string main, options, and stats, to determine where the menu is.
 b_state = "null";
 

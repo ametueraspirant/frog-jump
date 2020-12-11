@@ -1,2 +1,4 @@
-draw_self()
-draw_text_color(x,y,-(y-mouse_y)/15,c_white,c_white,c_white,c_white,255)
+/// @description See Frog
+
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+
