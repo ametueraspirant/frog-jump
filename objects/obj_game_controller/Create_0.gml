@@ -11,6 +11,12 @@ g_state = "menu"; // this will be set to the string menu, prep, go, and scores, 
 m_state = "main"; // this will be set to the string main, options, and stats, to determine where the menu is.
 b_state = "null";
 
+//Spawn Behavior Variables
+height = 0
+amount = 50
+behavior = 0
+next_height = height + amount
+
 // turned into macros for easy global access
 #macro _game_state obj_game_controller.g_state
 #macro _menu_state obj_game_controller.m_state
