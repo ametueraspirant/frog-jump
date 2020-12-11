@@ -7,6 +7,7 @@
     {"id":{"name":"spr_button_sho_gre_test","path":"sprites/spr_button_sho_gre_test/spr_button_sho_gre_test.yy",},"order":11,},
     {"id":{"name":"spr_button_options_test","path":"sprites/spr_button_options_test/spr_button_options_test.yy",},"order":13,},
     {"id":{"name":"platform_functions","path":"scripts/platform_functions/platform_functions.yy",},"order":1,},
+    {"id":{"name":"obj_button_parent","path":"objects/obj_button_parent/obj_button_parent.yy",},"order":3,},
     {"id":{"name":"spr_right_arrow_test","path":"sprites/spr_right_arrow_test/spr_right_arrow_test.yy",},"order":5,},
     {"id":{"name":"spr_cursor_test","path":"sprites/spr_cursor_test/spr_cursor_test.yy",},"order":12,},
     {"id":{"name":"spr_left_arrow_test","path":"sprites/spr_left_arrow_test/spr_left_arrow_test.yy",},"order":4,},
