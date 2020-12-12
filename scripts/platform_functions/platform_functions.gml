@@ -1,10 +1,10 @@
 function move_platforms(_length) 
     {
-	with(obj_platform)
+	with(obj_collider_parent)
         {
         y += _length
         }
-    spawn_platforms(0)
+    spawn_platforms(global.height)
     }
 
 function spawn_platforms(_height)
@@ -14,14 +14,14 @@ function spawn_platforms(_height)
     spr_height = sprite_get_height(sprite)
     height_range = irandom_range(-spr_height*6,-spr_height*3)
     //Change Spawn Behavior
-    if (height >= next_height)
+    if (global.height >= global.next_height)
         {
-        next_height += amount
+        global.next_height += global.amount
         //behavior = irandom(2)
         }
     
     //Spawning
-    switch(behavior)
+    switch(global.behavior)
         {
         //Normal Spawning
         case 0: 

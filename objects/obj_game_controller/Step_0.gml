@@ -1,4 +1,6 @@
 /// @description Run Game
+#macro _ground_width sprite_get_width(spr_ground_test) //change these out with sprite
+#macro _ground_height sprite_get_height(spr_ground_test)
 
 switch(_game_state) {
 	case "menu":
@@ -13,8 +15,17 @@ switch(_game_state) {
 	break;
 	case "prep":
 	if(!instance_exists(obj_frog)) {
-		//instance_create_layer()
+		for(var prep = 0; prep < room_width / _ground_width; prep++) {
+			instance_create_layer(
+			0 + (prep * _ground_width),
+			room_height - _ground_height,
+			_main_layer,
+			obj_ground
+			)
+		}
+		instance_create_layer(room_width/2, room_height - _ground_height * 2, _main_layer, obj_frog);
 	}
+	_game_state = "go";
 	break;
 	
 	case "go":
