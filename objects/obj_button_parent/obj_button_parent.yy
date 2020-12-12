@@ -1,16 +1,10 @@
 {
-  "spriteId": {
-    "name": "spr_ground_test",
-    "path": "sprites/spr_ground_test/spr_ground_test.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_collider_parent",
-    "path": "objects/obj_collider_parent/obj_collider_parent.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -27,11 +21,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "entities",
-    "path": "folders/Objects/entities.yy",
+    "name": "system",
+    "path": "folders/Objects/system.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_ground",
+  "name": "obj_button_parent",
   "tags": [],
   "resourceType": "GMObject",
 }

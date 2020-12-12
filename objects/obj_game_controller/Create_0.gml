@@ -7,9 +7,15 @@
 #macro _main_layer "Instances"
 
 // main game states
-g_state = "menu"; // this will be set to the string menu, prep, go, and scores, and called by other objects.
+g_state = "prep"; // this will be set to the string menu, prep, go, death, and scores, and called by other objects.
 m_state = "main"; // this will be set to the string main, options, and stats, to determine where the menu is.
 b_state = "null";
+
+//Spawn Behavior Variables // testing variables clean up later if I can remember.
+global.height = 0
+global.amount = 50
+global.behavior = 0
+global.next_height = global.height + global.amount
 
 // turned into macros for easy global access
 #macro _game_state obj_game_controller.g_state
@@ -29,3 +35,5 @@ menu_arrays = {
 };
 
 instance_create_layer(0, 0, _main_layer, obj_game_camera);
+
+debug_on = 0; // delete on release, debug mode.
