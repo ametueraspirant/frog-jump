@@ -1,7 +1,10 @@
 /// @description Init Frog
-vsp = 1;
-
 max_length = 320;
+
+// store base stats like gravity and friction to call later.
+base = { 
+	
+}
 
 state = {
 	str: "falling", // set to rising, falling, and idle depending on frog motion
@@ -12,3 +15,8 @@ state = {
 	hs: 0, // horizontal speed
 	vs: 0 // vertical speed
 };
+
+line = {
+	l: 0,
+	a: 0
+}

@@ -8,18 +8,40 @@ if(m_down) {
 
 // on mouse held, show the jump arc prediction line.
 if(m_held) {
-	// calculate and draw jump prediction line.
+	line.l = point_distance(state.mx, state.my, mouse_x, mouse_y); 
+	line.a = point_direction(state.mx, state.my, mouse_x, mouse_y);
+	state.hi = (min(max_length, line.l) * dcos(line.a)) / (max_length / 20);
+	state.vi = (min(max_length, line.l) * dsin(line.a)) / (max_length / 20);
 }
 
 // on mouse up, jump frog.
-if(m_up && state.str = "idle") {
-	state.hi = max(-max_length, min(max_length, lengthdir_x(state.mx - mouse_x, image_angle))) / (max_length * 0.01);
-	state.vi = min(max_length, lengthdir_y(state.my - mouse_y, image_angle+90)) / (max_length * 0.01);
-	//jump(state);
+if(m_up && (state.str == "idle" || state.str == "vine")) {
+	// ??? uh maybe something will go here.
+	
+	jump(state);
 }
-//(max_length/(max_length*0.1))
 
-// control frog state
+switch(state.str) {
+	case "rising":
+	
+	break;
+	case "falling":
+	
+	break;
+	case "idle":
+	
+	break;
+	default:
+	
+	break;
+}
+
+// move frog
+y += state.vs;
+x += state.hs;
+
+/*
+
 if(place_meeting(x, y + 1, obj_collider_parent)) {
 	state.str = "idle";
 } else {

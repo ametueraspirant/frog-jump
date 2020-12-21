@@ -1,9 +1,13 @@
-function move_platforms(_force) {
+function calc_platform_impulse(_force) {
 	with(obj_collider_parent) {
-	state.hs += _force.hi * 0.9;
+	_force.hs += _force.hi * 0.9;
 	};
 	spawn_platforms(global.height);
 };
+
+function move_platforms(_force) {
+	
+}
 
 function spawn_platforms(_height)
     {
