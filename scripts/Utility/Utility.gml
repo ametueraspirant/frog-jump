@@ -35,3 +35,11 @@ function animation_end() {
 function approach(_val1, _val2, _inc) {
 	return (_val1 + clamp(_val2-_val1, -_inc, _inc));
 }
+
+/// @func     calc_impulse(input, amount)
+/// @param    {real}   input             Initial value
+/// @param    {real}   amount            Amount to multiply
+/// @author   Amet
+function calc_impulse(_input, _amount) {
+	return _input * _amount;
+};

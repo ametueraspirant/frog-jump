@@ -1,26 +1,5 @@
 /// @description Move Frog
 
-// on mouse click, save first position.
-if(m_down) {
-	state.msavx = mouse_x;
-	state.msavy = mouse_y;
-}
-
-// on mouse held, show the jump arc prediction line.
-if(m_held) {
-	line.len = point_distance(state.msavx, state.msavy, mouse_x, mouse_y); 
-	line.ang = point_direction(state.msavx, state.msavy, mouse_x, mouse_y);
-	state.himp = (min(max_length, line.len) * dcos(line.ang)) / (max_length / 20);
-	state.vimp = (min(max_length, line.len) * dsin(line.ang)) / (max_length / 20);
-}
-
-// on mouse up, jump frog.
-if(m_up && (state.str == "idle" || state.str == "vine")) {
-	// ??? uh maybe something will go here.
-	
-	jump(state);
-}
-
 switch(state.str) {
 	case "rising":
 	

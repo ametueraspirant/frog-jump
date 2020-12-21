@@ -1,5 +1,11 @@
 /// @description Init Platforms
 
+// current platform state
 state = {
-	vs: 0
+	vsp: 0
 };
+
+// base stats like gravity
+base = {
+	
+}

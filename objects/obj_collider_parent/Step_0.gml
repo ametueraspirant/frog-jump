@@ -1,7 +1,3 @@
 /// @description Move Platforms
 
-//Cleanup
-if y > room_height
-    {
-    instance_destroy()
-    }
+move_platforms(state, base);
