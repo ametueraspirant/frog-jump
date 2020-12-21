@@ -2,16 +2,16 @@
 
 // on mouse click, save first position.
 if(m_down) {
-	state.mx = mouse_x;
-	state.my = mouse_y;
+	state.msavx = mouse_x;
+	state.msavy = mouse_y;
 }
 
 // on mouse held, show the jump arc prediction line.
 if(m_held) {
-	line.l = point_distance(state.mx, state.my, mouse_x, mouse_y); 
-	line.a = point_direction(state.mx, state.my, mouse_x, mouse_y);
-	state.hi = (min(max_length, line.l) * dcos(line.a)) / (max_length / 20);
-	state.vi = (min(max_length, line.l) * dsin(line.a)) / (max_length / 20);
+	line.len = point_distance(state.msavx, state.msavy, mouse_x, mouse_y); 
+	line.ang = point_direction(state.msavx, state.msavy, mouse_x, mouse_y);
+	state.himp = (min(max_length, line.len) * dcos(line.ang)) / (max_length / 20);
+	state.vimp = (min(max_length, line.len) * dsin(line.ang)) / (max_length / 20);
 }
 
 // on mouse up, jump frog.
@@ -36,16 +36,14 @@ switch(state.str) {
 	break;
 }
 
-// move frog
-y += state.vs;
-x += state.hs;
+move_frog(state, base);
+
 
 /*
-
 if(place_meeting(x, y + 1, obj_collider_parent)) {
 	state.str = "idle";
 } else {
-	if(state.vs <= 0) {
+	if(state.vsp <= 0) {
 		state.str = "rising";
 	} else {
 		state.str = "falling";

@@ -5,15 +5,15 @@
 /// Thanks to Zen00 and Sahaun for helping with this code
 function increment_fractions(_state) {
 	// Add fractions back
-	_state.hs += _state.hsf;
-	_state.vs += _state.vsf;
+	_state.hsp += _state.hspf;
+	_state.vsp += _state.vspf;
 	
 	// Store and remove fractions for the next frame, so we're always in an integer position
 	// Int64s don't store fractions, so we're essentially flooring our numbers to remove the fraction, this also caps the value of our speed to 4.something quintrillion.
-	_state.hsf = frac(_state.hs);
-	_state.hs = int64(_state.hs);
-	_state.vsf = frac(_state.vs);
-	_state.vs = int64(_state.vs);
+	_state.hspf = frac(_state.hsp);
+	_state.hsp = int64(_state.hsp);
+	_state.vspf = frac(_state.vsp);
+	_state.vsp = int64(_state.vsp);
 	
 	// return _state into the external variables
 	return _state;

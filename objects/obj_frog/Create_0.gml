@@ -2,21 +2,28 @@
 max_length = 320;
 
 // store base stats like gravity and friction to call later.
-base = { 
-	
+base = {
+	grav: { // gravity
+		rise: 0.7, // gravity while rising
+		fall: 1.0 // gravity while falling
+	},
+	frict: { // friction
+		air: 0.2, // friction while in air
+		plat: 0.5 // friction wh ile on platforms
+	}
 }
 
 state = {
 	str: "falling", // set to rising, falling, and idle depending on frog motion
-	mx: 0, // mouse drag starting x position
-	my: 0, // mouse drag starting y position
-	hi: 0, // stored horizontal impulse
-	vi: 0, // stored vertical impulse
-	hs: 0, // horizontal speed
-	vs: 0 // vertical speed
+	msavx: 0, // mouse drag starting x position
+	msavy: 0, // mouse drag starting y position
+	himp: 0, // stored horizontal impulse
+	vimp: 0, // stored vertical impulse
+	hsp: 0, // horizontal speed
+	vsp: 0 // vertical speed
 };
 
 line = {
-	l: 0,
-	a: 0
+	len: 0,
+	ang: 0
 }
