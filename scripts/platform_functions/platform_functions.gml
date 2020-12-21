@@ -1,6 +1,8 @@
 function move_platforms(_state, _base) {
-	
-	// spawn_platforms(global.height); the function will need to be updated slightly
+	with(obj_collider_parent) {
+		
+	}
+	// if something something spawn platform every few distance spawn_platforms(global.height); the function will need to be updated slightly
 }
 
 function spawn_platforms(_height)
