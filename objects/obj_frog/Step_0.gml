@@ -2,12 +2,46 @@
 
 switch(state.str) {
 	case "rising":
-	
+		state.grav = base.grav.rise;
+		state.fric = base.fric.air;
+		if(state.vsp > 0) { // if go down, falling.
+			state.str = "falling";
+			break;
+		}
 	break;
 	case "falling":
-	
+		state.grav = base.grav.fall;
+		state.fric = base.fric.air;
+		if(state.vsp <= 0) { // if go up, rising.
+			state.str = "rising";
+			break;
+		}
+		if(place_meeting(x, y + 1, obj_collider_parent)) { // if hit ground, idle.
+			state.str = "idle";
+			break;
+		}
+		if(place_meeting(x, y + state.vsp, obj_collider_parent) && bbox_bottom.y >= state.platid.bbox_bottom.y) {
+			vsp = 0;
+			state.str = "idle";
+			break;
+		}
 	break;
 	case "idle":
+		state.fric = base.fric.plat;
+		if(m_down) { // if click, windup.
+			state.str = "windup";
+			break;
+		}
+		// add falling logic here
+	break;
+	case "windup":
+		if(state.vsp > 0) {
+			state.str = "rising"; // if go up, rising.
+			break;
+		}
+		// and here that doesn't conflict with camera zoom.
+	break;
+	case "coyote":
 	
 	break;
 	default:
@@ -16,37 +50,3 @@ switch(state.str) {
 }
 
 move_frog(state, base);
-
-
-/*
-if(place_meeting(x, y + 1, obj_collider_parent)) {
-	state.str = "idle";
-} else {
-	if(state.vsp <= 0) {
-		state.str = "rising";
-	} else {
-		state.str = "falling";
-	}
-}
-
-//Jumping
-if place_meeting(x,y+1,obj_collider_parent) and keyboard_check_pressed(vk_space)
-    {
-    vsp += -(y-mouse_y)/15
-    with(obj_game_controller)
-        {
-        move_platforms(100)
-        }
-}
-
-//vertical collision
-if place_meeting(x,y+abs(vsp),obj_collider_parent) and vsp > 0
-    {
-    while(!place_meeting(x,y+sign(vsp),obj_collider_parent)) and vsp > 0
-        {
-        y += sign(vsp)
-        }    
-    vsp = 0
-    }
-y += vsp
-

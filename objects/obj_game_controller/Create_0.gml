@@ -21,6 +21,10 @@ global.height = 0
 global.amount = 50
 global.behavior = 0
 global.next_height = global.height + global.amount
+global.grav = {
+	rise: 0.7,
+	fall: 1
+};
 
 state = {
 	msavx: 0, // mouse drag starting x position
