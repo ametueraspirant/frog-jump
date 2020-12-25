@@ -17,13 +17,13 @@ res[$ "1440x"] = [1440, 2960];
 // @desc function to grab display and set the window. 
 // @use window_set_size_ext("750p");
 function window_set_size_ext(_cur) {
-    if (!variable_struct_exists(res, _cur)) {
+	if (!variable_struct_exists(res, _cur)) {
 		show_debug_message("something went wrong or that resolution doesn't exist. set to default 1080p");
 		_cur = "1080p"
 	}
-    var _size = res[$ _cur];
-    window_set_size(_size[0], _size[1]);
-	surface_resize(application_surface, _size[0], _size[1]);
+	var _size = res[$ _cur];
+	window_set_size(_size[0], _size[1]);
+	//surface_resize(application_surface, _size[0], _size[1]);
 }
 
 window_set_size_ext("540p");

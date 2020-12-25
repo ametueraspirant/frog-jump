@@ -1,47 +1,77 @@
 /// @description Move Frog
 
-if(m_down) {
-	state.mx = mouse_x;
-	state.my = mouse_y;
-}
+state = increment_fractions(state);
+		
+if(get_id() != noone)state.platid = get_id();
 
-if(m_held) {
+if(state.hsp > 0)state.dir = 1;
+if(state.hsp < 0)state.dir = -1;
+
+if(state.hsp <= 1)state.hsp = 0;
+else state.hsp -= state.fric * state.dir;
+
+switch(state.str) {
+	case "rising":
+	#region // rising
+	state.grav = base.grav.rise;
+	state.fric = base.fric.air;
+	if(state.vsp > 0) { // if go down, falling.
+		state.str = "falling";
+		break;
+	}
+	#endregion
+	break;
+	case "falling":
+	#region // falling
+	state.grav = base.grav.fall;
+	state.fric = base.fric.air;
+	if(state.vsp <= 0) { // if go up, rising.
+		state.str = "rising";
+		break;
+	}
+	if(place_meeting(x, y + 1, obj_collider_parent)) { // if hit ground, idle.
+		state.str = "idle";
+		break;
+	}
+	#endregion
+	break;
+	case "idle":
+	#region // idle
+	state.fric = base.fric.plat;
+	if(m_down) { // if click, windup.
+		state.str = "windup";
+		break;
+	}
+	// add falling logic here
+	#endregion
+	break;
+	case "windup":
+	#region // windup
+	if(state.vsp > 0) {
+		state.str = "rising"; // if go up, rising.
+		break;
+	}
+	// and here that doesn't conflict with camera zoom.
+	#endregion
+	break;
+	case "coyote":
+	#region // coyote
 	
+	#endregion
+	break;
+	default:
+	#region // default
+	
+	#endregion
+	break;
 }
 
-if(m_up) {
-	state.hi = max(-max_length, min(max_length, lengthdir_x(state.mx - mouse_x, image_angle)));
-	state.vi = min(max_length, lengthdir_y(state.my - mouse_y, image_angle+90));
-	jump(state);
+if(place_meeting(x, y + state.vsp, obj_collider_parent) && bbox_bottom <= state.platid.bbox_top) {
+	vsp = 0;
+	state.str = "idle";
+	y = state.platid.bbox_top - 1 - bbox_bottom;
+} else {
+	state.vsp += state.grav;
 }
-
-
-
-//Jumping
-if place_meeting(x,y+1,obj_collider_parent) and keyboard_check_pressed(vk_space)
-    {
-    vsp += -(y-mouse_y)/15
-    with(obj_game_controller)
-        {
-        move_platforms(100)
-        }
-}
-
-//Move left and right
-if keyboard_check(ord("D"))
-x += 10
-if keyboard_check(ord("A"))
-x += -10
-vsp += 2
-
-//vertical collision
-if place_meeting(x,y+abs(vsp),obj_collider_parent) and vsp > 0
-    {
-    while(!place_meeting(x,y+sign(vsp),obj_collider_parent)) and vsp > 0
-        {
-        y += sign(vsp)
-        }    
-    vsp = 0
-    }
-y += vsp
-
+y += state.vsp;
+x += state.hsp;

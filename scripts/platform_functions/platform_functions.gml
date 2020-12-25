@@ -1,11 +1,10 @@
-function move_platforms(_length) 
-    {
-	with(obj_collider_parent)
-        {
-        y += _length
-        }
-    spawn_platforms(global.height)
-    }
+function move_platforms(_state) {
+	with(obj_collider_parent) {
+		_state = increment_fractions(_state);
+		
+	}
+	// if something something spawn platform every few distance spawn_platforms(global.height); the function will need to be updated slightly
+}
 
 function spawn_platforms(_height)
     {
