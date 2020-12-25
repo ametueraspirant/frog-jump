@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_frog_test",
-    "path": "sprites/spr_frog_test/spr_frog_test.yy",
+    "name": "spr_frog",
+    "path": "sprites/spr_frog/spr_frog.yy",
   },
   "solid": false,
   "visible": true,

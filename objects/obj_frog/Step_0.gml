@@ -13,6 +13,7 @@ else state.hsp -= state.fric * state.dir;
 switch(state.str) {
 	case "rising":
 	#region // rising
+    image_index = 2
 	state.grav = base.grav.rise;
 	state.fric = base.fric.air;
 	if(state.vsp > 0) { // if go down, falling.
@@ -23,6 +24,7 @@ switch(state.str) {
 	break;
 	case "falling":
 	#region // falling
+    image_index = 3
 	state.grav = base.grav.fall;
 	state.fric = base.fric.air;
 	if(state.vsp <= 0) { // if go up, rising.
@@ -37,6 +39,7 @@ switch(state.str) {
 	break;
 	case "idle":
 	#region // idle
+    image_index = 0
 	state.fric = base.fric.plat;
 	if(m_down) { // if click, windup.
 		state.str = "windup";

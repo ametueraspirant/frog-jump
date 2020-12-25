@@ -1,5 +1,5 @@
 /// @description Init Frog
-
+image_speed = 0
 base = { // store base stats like gravity and friction to call later.
 	grav: { // gravity
 		rise: global.grav.rise * 0.1, // gravity while rising

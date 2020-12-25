@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_platform_test",
-    "path": "sprites/spr_platform_test/spr_platform_test.yy",
+    "name": "spr_branch",
+    "path": "sprites/spr_branch/spr_branch.yy",
   },
   "solid": false,
   "visible": true,
