@@ -1,7 +1,1 @@
-function move_frog(_state, _base) {
-	with(obj_frog) {
-		state = increment_fractions(state);
-		if(inst() != noone)state.platid = inst();
-		
-	}
-}
+function get_id(){return instance_place(x + state.hsp, y + state.vsp, obj_collider_parent)}; // function for getting platform id.

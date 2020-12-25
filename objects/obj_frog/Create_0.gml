@@ -3,7 +3,8 @@
 base = { // store base stats like gravity and friction to call later.
 	grav: { // gravity
 		rise: global.grav.rise * 0.1, // gravity while rising
-		fall: global.grav.fall * 0.1 // gravity while falling
+		fall: global.grav.fall * 0.1, // gravity while falling
+		plat: 0 // gravity while on platform, just in case.
 	},
 	fric: { // friction
 		air: 0.2, // friction while in air
@@ -27,7 +28,6 @@ state = { // frog current state
 		coyote: 0,
 		bullet: 0
 	},
+	dir: 1, // direction facing.
 	platid: noone // saving the platform id.
 };
-
-function inst(){instance_place(x + state.hsp, y + state.vsp, obj_collider_parent)}; // function for getting platform id.

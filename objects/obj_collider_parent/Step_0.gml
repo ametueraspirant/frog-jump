@@ -1,3 +1,3 @@
 /// @description Move Platforms
 
-move_platforms(state, base);
+move_platforms(state);
