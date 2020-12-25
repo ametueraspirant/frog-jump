@@ -55,8 +55,8 @@ switch(_game_state) {
 		
 		// if the frog is landed and also too high.
 		if(obj_frog.state.str == "idle" && obj_frog.y <= 1500) {
-			obj_frog.y = lerp(obj_frog.y, 1500, 0.5); // move frog.
-			obj_collider_parent.y = lerp(obj_frog.y, 1500, 0.5); // will this work? I don't know.
+			obj_frog.y = lerp(obj_frog.y, 1500, 0.1); // move frog.
+			obj_collider_parent.y = lerp(obj_frog.y, 1500, 0.1); // will this work? I don't know.
 		}
 	break;
 	case "stats":

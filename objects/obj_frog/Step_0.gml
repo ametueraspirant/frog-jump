@@ -72,7 +72,6 @@ switch(state.str) {
 if(place_meeting(x, y + state.vsp, obj_collider_parent) && bbox_bottom <= state.platid.bbox_top) {
 	vsp = 0;
 	state.str = "idle";
-	y = state.platid.bbox_top - 1 - bbox_bottom;
 } else {
 	state.vsp += state.grav;
 }
