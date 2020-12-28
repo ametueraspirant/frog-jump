@@ -1,6 +1,6 @@
 /// @description Run Game
-#macro _ground_width sprite_get_width(spr_ground_test) //change these out with sprite
-#macro _ground_height sprite_get_height(spr_ground_test)
+#macro _ground_width sprite_get_width(spr_ground) //change these out with sprite
+#macro _ground_height sprite_get_height(spr_ground)
 
 switch(_game_state) {
 	case "menu":

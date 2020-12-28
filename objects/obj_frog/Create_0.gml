@@ -4,16 +4,17 @@ base = { // store base stats like gravity and friction to call later.
 	grav: { // gravity
 		rise: global.grav.rise * 0.1, // gravity while rising
 		fall: global.grav.fall * 0.1, // gravity while falling
-		plat: 0 // gravity while on platform, just in case.
+		plat: 0, // gravity while on platform, just in case.
+		spd: global.max_fall_speed * 0.1 // max falling speed
 	},
 	fric: { // friction
 		air: 0.2, // friction while in air
 		plat: 0.5 // friction while on platforms
 	},
 	timer: {
-		coyote: 10, //coyote time, 10 frames.
-		bullet: room_speed * 1.5 //bullet time, 1.5 seconds.
-	}
+		coyote: 10, //coyote time, 10 frames
+		bullet: room_speed * 1 //bullet time, 1 second
+	},
 };
 
 state = { // frog current state
@@ -28,6 +29,6 @@ state = { // frog current state
 		coyote: 0,
 		bullet: 0
 	},
-	dir: 1, // direction facing.
-	platid: noone // saving the platform id.
+	dir: 1, // direction facing
+	platid: noone // saving the platform id
 };

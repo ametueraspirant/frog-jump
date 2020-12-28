@@ -17,14 +17,15 @@ b_state = "null"; // this will be called when rendering menu buttons probably.
 #macro _button_state obj_game_controller.b_state
 
 //Spawn Behavior Variables // testing variables clean up later if I can remember.
-global.height = 0
-global.amount = 50
-global.behavior = 0
+global.height = 0;
+global.amount = 50;
+global.behavior = 0;
 global.next_height = global.height + global.amount
 global.grav = {
 	rise: 0.7,
 	fall: 1
 };
+global.max_fall_speed = 10;
 
 state = {
 	msavx: 0, // mouse drag starting x position
