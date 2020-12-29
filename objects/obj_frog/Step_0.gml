@@ -16,7 +16,7 @@ if(!place_meeting(x, y + state.vsp, obj_collider_parent)){
 		state.vsp += state.grav;
 	}
 } else {
-	if(state.str == "idle") {
+	if(place_meeting(x, y + state.vsp, obj_collider_parent)) {
 		state.vsp = 0;
 	}
 }
