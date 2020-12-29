@@ -5,6 +5,7 @@
 #macro m_held mouse_check_button(mb_left)
 #macro m_up mouse_check_button_released(mb_left)
 #macro _main_layer "Instances"
+#macro _player_layer "Player"
 
 // main game states
 g_state = "prep"; // this will be set to the string menu, prep, go, death, and scores, and called by other objects.
@@ -21,11 +22,6 @@ global.height = 0;
 global.amount = 50;
 global.behavior = 0;
 global.next_height = global.height + global.amount
-global.grav = {
-	rise: 0.7,
-	fall: 1
-};
-global.max_fall_speed = 10;
 
 state = {
 	msavx: 0, // mouse drag starting x position

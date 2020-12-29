@@ -2,10 +2,10 @@
 image_speed = 0
 base = { // store base stats like gravity and friction to call later.
 	grav: { // gravity
-		rise: global.grav.rise * 0.1, // gravity while rising
-		fall: global.grav.fall * 0.1, // gravity while falling
+		rise: 0.4, // gravity while rising
+		fall: 0.6, // gravity while falling
 		plat: 0, // gravity while on platform, just in case.
-		spd: global.max_fall_speed * 0.1 // max falling speed
+		spd: 10 // max falling speed
 	},
 	fric: { // friction
 		air: 0.2, // friction while in air
@@ -18,7 +18,7 @@ base = { // store base stats like gravity and friction to call later.
 };
 
 state = { // frog current state
-	str: "falling", // set to rising, falling, and idle depending on frog motion
+	str: "falling", // set to rising, falling, coyote, and idle depending on frog motion
 	hsp: 0, // horizontal speed
 	hspf: 0, // horizontal speed fractional
 	vsp: 0, // vertical speed

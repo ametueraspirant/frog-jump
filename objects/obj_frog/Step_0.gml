@@ -10,6 +10,17 @@ if(state.hsp < 0)state.dir = -1;
 if(state.hsp <= 1)state.hsp = 0;
 else state.hsp -= state.fric * state.dir;
 
+if(!place_meeting(x, y + state.vsp, obj_collider_parent)){
+	y += state.vsp;
+	if(state.vsp <= base.grav.spd){
+		state.vsp += state.grav;
+	}
+} else {
+	if(state.str == "idle") {
+		state.vsp = 0;
+	}
+}
+
 switch(state.str) {
 	case "rising":
 	#region // rising
@@ -57,11 +68,6 @@ switch(state.str) {
 	// and here that doesn't conflict with camera zoom.
 	#endregion
 	break;
-	case "coyote":
-	#region // coyote
-	
-	#endregion
-	break;
 	default:
 	#region // default
 	
@@ -69,25 +75,3 @@ switch(state.str) {
 	break;
 }
 
-if(place_meeting(x, y + state.vsp, obj_collider_parent) && bbox_bottom <= state.platid.bbox_top) {
-	vsp = 0;
-	state.str = "idle"; 
-} else {
-	state.vsp += state.grav;
-}
-y += state.vsp;
-x += state.hsp;
-
-/*
-if(!place_meeting(x, y + state.vsp, obj_collider_parent)){
-	y += state.vsp;
-	if(state.vsp <= maxFallSpeed){
-		state.vsp += state.grav;
-	}
-} else {
-	while(!place_meeting(x, y + sign(state.vsp), obj_collider_parent)){
-	y += sign(state.vsp);
-	}
-	state.vsp = 0
-}
-*/

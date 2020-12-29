@@ -23,7 +23,7 @@ switch(_game_state) {
 			obj_ground
 			)
 		}
-		instance_create_layer(room_width/2, room_height - _ground_height * 2, _main_layer, obj_frog);
+		instance_create_layer(room_width/2, room_height - _ground_height * 2, _player_layer, obj_frog);
 	}
 	_game_state = "go";
 	break;
@@ -46,10 +46,9 @@ switch(_game_state) {
 		// on mouse up
 		if(m_up) {
 			// if vertical impulse is not too weak and not upwards.
-			if(state.vimp <= -3 && obj_frog.state.str == "idle") {
-				obj_frog.state.hsp = calc_impulse(state.himp, 0.1);
-				obj_frog.state.vsp = calc_impulse(state.vimp, 1);
-				obj_collider_parent.state.vsp = calc_impulse(state.vimp, 0.9);
+			if(state.vimp <= -3 && (obj_frog.state.str == "idle")) {
+				obj_frog.state.hsp = state.himp
+				obj_frog.state.vsp = state.vimp
 			}
 		}
 		
