@@ -16,9 +16,11 @@ if(!place_meeting(x, y + state.vsp, obj_collider_parent)){
 		state.vsp += state.grav;
 	}
 } else {
-	if(place_meeting(x, y + state.vsp, obj_collider_parent)) {
-		state.vsp = 0;
+	if(!place_meeting(x, y + sign(state.vsp), obj_collider_parent)) {
+		y += state.vsp;
 	}
+	state.vsp = 0;
+	state.vspf = 0;
 }
 
 switch(state.str) {
@@ -61,7 +63,8 @@ switch(state.str) {
 	break;
 	case "windup":
 	#region // windup
-	if(state.vsp > 0) {
+	image_index = 1;
+	if(state.vsp < 0) {
 		state.str = "rising"; // if go up, rising.
 		break;
 	}

@@ -46,7 +46,7 @@ switch(_game_state) {
 		// on mouse up
 		if(m_up) {
 			// if vertical impulse is not too weak and not upwards.
-			if(state.vimp <= -3 && (obj_frog.state.str == "idle")) {
+			if(state.vimp <= -3 && (obj_frog.state.str == "windup")) {
 				obj_frog.state.hsp = state.himp
 				obj_frog.state.vsp = state.vimp
 			}
