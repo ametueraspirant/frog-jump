@@ -81,4 +81,3 @@ switch(state.str) {
 	#endregion
 	break;
 }
-
