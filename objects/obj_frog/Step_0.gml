@@ -16,7 +16,7 @@ if(!place_meeting(x, y + state.vsp, obj_collider_parent)){
 		state.vsp += state.grav;
 	}
 } else {
-	if(!place_meeting(x, y + sign(state.vsp), obj_collider_parent)) {
+	if(!place_meeting(x, y + 1, obj_collider_parent)) {
 		y += state.vsp;
 	}
 	state.vsp = 0;
@@ -40,7 +40,7 @@ switch(state.str) {
     image_index = 3
 	state.grav = base.grav.fall;
 	state.fric = base.fric.air;
-	if(state.vsp <= 0) { // if go up, rising.
+	if(state.vsp < 0) { // if go up, rising.
 		state.str = "rising";
 		break;
 	}
@@ -64,8 +64,12 @@ switch(state.str) {
 	case "windup":
 	#region // windup
 	image_index = 1;
-	if(state.vsp < 0) {
+	if(m_up && state.vsp < 0) {
 		state.str = "rising"; // if go up, rising.
+		break;
+	}
+	if(m_up) {
+		state.str = "idle"; // if let go, idle.
 		break;
 	}
 	// and here that doesn't conflict with camera zoom.
