@@ -23,21 +23,6 @@ global.amount = 50;
 global.behavior = 0;
 global.next_height = global.height + global.amount
 
-state = {
-	msavx: 0, // mouse drag starting x position
-	msavy: 0, // mouse drag starting y position
-	himp: 0, // stored horizontal impulse
-	vimp: 0, // stored vertical impulse
-};
-
-// saved line values
-line = {
-	len: 0,
-	ang: 0
-};
-
-// line max length
-max_length = 320;
 
 // contain the set of x + y coordinates and objects to spawn at each coordinate to be called with the menu_render function.
 menu_arrays = {

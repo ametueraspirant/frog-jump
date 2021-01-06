@@ -30,5 +30,18 @@ state = { // frog current state
 		bullet: 0
 	},
 	dir: 1, // direction facing
-	platid: noone // saving the platform id
+	platid: noone, // saving the platform id
+	msavx: 0, // mouse drag starting x position
+	msavy: 0, // mouse drag starting y position
+	himp: 0, // stored horizontal impulse
+	vimp: 0, // stored vertical impulse
 };
+
+// saved line values
+line = {
+	len: 0,
+	ang: 0
+};
+
+// line max length
+max_length = 320;

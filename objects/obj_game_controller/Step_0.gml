@@ -29,34 +29,7 @@ switch(_game_state) {
 	break;
 	
 	case "go":
-		// on mouse click, save first position.
-		if(m_down) {
-			state.msavx = mouse_x;
-			state.msavy = mouse_y;
-		}
-
-		// on mouse held, show the jump arc prediction line.
-		if(m_held) {
-			line.len = point_distance(state.msavx, state.msavy, mouse_x, mouse_y); 
-			line.ang = point_direction(state.msavx, state.msavy, mouse_x, mouse_y);
-			state.himp = (min(max_length, line.len) * dcos(line.ang)) / (max_length / 20);
-			state.vimp = (min(max_length, line.len) * dsin(line.ang)) / (max_length / 20);
-		}
-
-		// on mouse up
-		if(m_up) {
-			// if vertical impulse is not too weak and not upwards.
-			if(state.vimp <= -3 && (obj_frog.state.str == "windup")) {
-				obj_frog.state.hsp = state.himp
-				obj_frog.state.vsp = state.vimp
-			}
-		}
 		
-		// if the frog is landed and also too high.
-		if(obj_frog.state.str == "idle" && obj_frog.y <= 1500) {
-			obj_frog.y = lerp(obj_frog.y, 1500, 0.1); // move frog.
-			obj_collider_parent.y = lerp(obj_frog.y, 1500, 0.1); // will this work? I don't know.
-		}
 	break;
 	case "stats":
 	
