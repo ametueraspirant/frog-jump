@@ -1,14 +1,16 @@
 /// @description Move Frog
 
-state = increment_fractions(state);
+state = increment_fractions(state); // increment fractions code makes sure frog always moving at incremental speeds.
 		
-if(get_id() != noone)state.platid = get_id();
+if(get_id() != noone)state.platid = get_id(); // checks every frame for a nearby platform in the jump path of the frog and gets the id.
 
+// sets the frog's direction depending on speed.
 if(state.hsp > 0)state.dir = 1;
 if(state.hsp < 0)state.dir = -1;
 
-if(state.hsp <= 1)state.hsp = 0;
-else state.hsp -= state.fric * state.dir;
+// sets the frog speed to 0 if it's too low
+if(abs(state.hsp) <= 1 && state.str == "idle")state.hsp = 0 && state.hspf = 0; // this a thing I can do?
+else state.hsp -= state.fric * state.dir * abs(state.hsp/base.fric.spd);
 
 // on mouse click, save first position.
 if(m_down) {
@@ -20,8 +22,8 @@ if(m_down) {
 if(m_held) {
 	line.len = point_distance(state.msavx, state.msavy, mouse_x, mouse_y); 
 	line.ang = point_direction(state.msavx, state.msavy, mouse_x, mouse_y);
-	state.himp = (min(max_length, line.len) * dcos(line.ang)) / (max_length / 20);
-	state.vimp = (min(max_length, line.len) * dsin(line.ang)) / (max_length / 20);
+	state.himp = (min(max_length, line.len) * dcos(line.ang)) / (max_length / base.jumpstr);
+	state.vimp = (min(max_length, line.len) * dsin(line.ang)) / (max_length / base.jumpstr);
 }
 
 // on mouse up
@@ -39,9 +41,9 @@ if(state.str == "idle" && y <= 1500) {
 	obj_collider_parent.y = lerp(y, 1500, 0.1); // and platform.
 }
 
-if(!place_meeting(x, y + state.vsp, obj_collider_parent)){
+if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
 	y += state.vsp;
-	if(state.vsp <= base.grav.spd){
+	if(state.vsp <= base.grav.spd) {
 		state.vsp += state.grav;
 	}
 } else {
@@ -52,18 +54,13 @@ if(!place_meeting(x, y + state.vsp, obj_collider_parent)){
 	state.vspf = 0;
 }
 
-/*if(!place_meeting(x, y + state.vsp, obj_collider_parent)){
-	y += state.vsp;
-	if(state.vsp <= base.grav.spd){
-		state.hsp -= state.fric;
-	}
-} else {
-	if(!place_meeting(x, y + 1, obj_collider_parent)) {
-		x += state.hsp;
-	}
-	state.hsp = 0;
-	state.hspf = 0;
-}*/
+x -= state.hsp;
+
+if(x < 0 || x > room_width) {
+	state.hsp = -state.hsp;
+	state.hspf = -state.hspf;
+	x += sign(state.dir);
+};
 
 switch(state.str) {
 	case "rising":
@@ -106,7 +103,7 @@ switch(state.str) {
 	case "windup":
 	#region // windup
 	image_index = 1;
-	if(m_up && state.vsp < 0) {
+	if(state.vsp < 0) {
 		state.str = "rising"; // if go up, rising.
 		break;
 	}

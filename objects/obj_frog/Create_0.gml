@@ -2,19 +2,21 @@
 image_speed = 0
 base = { // store base stats like gravity and friction to call later.
 	grav: { // gravity
-		rise: 0.4, // gravity while rising
-		fall: 0.6, // gravity while falling
+		rise: 0.8, // gravity while rising
+		fall: 0.9, // gravity while falling
 		plat: 0, // gravity while on platform, just in case.
-		spd: 10 // max falling speed
+		spd: 25 // max falling speed
 	},
 	fric: { // friction
 		air: 0.2, // friction while in air
-		plat: 0.5 // friction while on platforms
+		plat: 0.7, // friction while on platforms
+		spd: 10
 	},
 	timer: {
 		coyote: 10, //coyote time, 10 frames
 		bullet: room_speed * 1 //bullet time, 1 second
 	},
+	jumpstr: 40
 };
 
 state = { // frog current state
