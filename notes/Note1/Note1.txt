@@ -1,0 +1,3 @@
+make sure to fix platform spawning and check all the hitboxes.
+
+the frog still clips through terrain, stop it doing that.

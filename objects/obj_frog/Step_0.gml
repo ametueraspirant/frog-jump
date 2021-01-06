@@ -1,18 +1,71 @@
 /// @description Move Frog
 
-state = increment_fractions(state);
+state = increment_fractions(state); // increment fractions code makes sure frog always moving at incremental speeds.
 		
-if(get_id() != noone)state.platid = get_id();
+if(get_id() != noone)state.platid = get_id(); // checks every frame for a nearby platform in the jump path of the frog and gets the id.
 
+// sets the frog's direction depending on speed.
 if(state.hsp > 0)state.dir = 1;
 if(state.hsp < 0)state.dir = -1;
 
-if(state.hsp <= 1)state.hsp = 0;
-else state.hsp -= state.fric * state.dir;
+// sets the frog speed to 0 if it's too low
+if(abs(state.hsp) <= 1 && state.str == "idle")state.hsp = 0 && state.hspf = 0; // this a thing I can do?
+else state.hsp -= state.fric * state.dir * abs(state.hsp/base.fric.spd);
+
+// on mouse click, save first position.
+if(m_down) {
+	state.msavx = mouse_x;
+	state.msavy = mouse_y;
+}
+
+// on mouse held, show the jump arc prediction line.
+if(m_held) {
+	line.len = point_distance(state.msavx, state.msavy, mouse_x, mouse_y); 
+	line.ang = point_direction(state.msavx, state.msavy, mouse_x, mouse_y);
+	state.himp = (min(max_length, line.len) * dcos(line.ang)) / (max_length / base.jumpstr);
+	state.vimp = (min(max_length, line.len) * dsin(line.ang)) / (max_length / base.jumpstr);
+}
+
+// on mouse up
+if(m_up) {
+	// if vertical impulse is not too weak and not upwards.
+	if(state.vimp <= -3 && (state.str == "windup")) {
+		state.hsp = state.himp
+		state.vsp = state.vimp
+	}
+}
+
+// if the frog is landed and also too high.
+if(state.str == "idle" && y <= 1500) {
+	y = lerp(y, 1500, 0.1); // move frog.
+	obj_collider_parent.y = lerp(y, 1500, 0.1); // and platform.
+}
+
+if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
+	y += state.vsp;
+	if(state.vsp <= base.grav.spd) {
+		state.vsp += state.grav;
+	}
+} else {
+	if(!place_meeting(x, y + 1, obj_collider_parent)) {
+		y += state.vsp;
+	}
+	state.vsp = 0;
+	state.vspf = 0;
+}
+
+x -= state.hsp;
+
+if(x < 0 || x > room_width) {
+	state.hsp = -state.hsp;
+	state.hspf = -state.hspf;
+	x += sign(state.dir);
+};
 
 switch(state.str) {
 	case "rising":
 	#region // rising
+    image_index = 2
 	state.grav = base.grav.rise;
 	state.fric = base.fric.air;
 	if(state.vsp > 0) { // if go down, falling.
@@ -23,9 +76,10 @@ switch(state.str) {
 	break;
 	case "falling":
 	#region // falling
+    image_index = 3
 	state.grav = base.grav.fall;
 	state.fric = base.fric.air;
-	if(state.vsp <= 0) { // if go up, rising.
+	if(state.vsp < 0) { // if go up, rising.
 		state.str = "rising";
 		break;
 	}
@@ -37,6 +91,7 @@ switch(state.str) {
 	break;
 	case "idle":
 	#region // idle
+    image_index = 0
 	state.fric = base.fric.plat;
 	if(m_down) { // if click, windup.
 		state.str = "windup";
@@ -47,16 +102,16 @@ switch(state.str) {
 	break;
 	case "windup":
 	#region // windup
-	if(state.vsp > 0) {
+	image_index = 1;
+	if(state.vsp < 0) {
 		state.str = "rising"; // if go up, rising.
 		break;
 	}
+	if(m_up) {
+		state.str = "idle"; // if let go, idle.
+		break;
+	}
 	// and here that doesn't conflict with camera zoom.
-	#endregion
-	break;
-	case "coyote":
-	#region // coyote
-	
 	#endregion
 	break;
 	default:
@@ -66,12 +121,3 @@ switch(state.str) {
 	break;
 }
 
-if(place_meeting(x, y + state.vsp, obj_collider_parent) && bbox_bottom <= state.platid.bbox_top) {
-	vsp = 0;
-	state.str = "idle";
-	y = state.platid.bbox_top - 1 - bbox_bottom;
-} else {
-	state.vsp += state.grav;
-}
-y += state.vsp;
-x += state.hsp;
