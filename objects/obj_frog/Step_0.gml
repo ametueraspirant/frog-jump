@@ -36,10 +36,10 @@ if(m_up) {
 }
 
 // if the frog is landed and also too high.
-if(state.str == "idle" && y <= 1500) {
-	y = lerp(y, 1500, 0.1); // move frog.
-	obj_collider_parent.y = lerp(y, 1500, 0.1); // and platform.
-}
+//if(state.str == "idle" && y <= 1500) {
+//	y = lerp(y, 1500, 0.1); // move frog.
+//	obj_collider_parent.y = lerp(y, 1500, 0.1); // and platform.
+//}
 
 if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
 	y += state.vsp;
@@ -47,8 +47,8 @@ if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
 		state.vsp += state.grav;
 	}
 } else {
-	if(!place_meeting(x, y + 1, obj_collider_parent)) {
-		y += state.vsp;
+	while(!place_meeting(x, y + 1, obj_collider_parent)) {
+		y += sign(state.vsp);
 	}
 	state.vsp = 0;
 	state.vspf = 0;
@@ -65,6 +65,7 @@ if(x < 0 || x > room_width) {
 switch(state.str) {
 	case "rising":
 	#region // rising
+    global.height += 1
     image_index = 2
 	state.grav = base.grav.rise;
 	state.fric = base.fric.air;
@@ -120,4 +121,11 @@ switch(state.str) {
 	#endregion
 	break;
 }
-
+if instance_exists(obj_platform){
+    if state.str == "rising"{
+        obj_platform.vspeed = -obj_frog.state.vsp
+    }
+    else{
+    obj_platform.vspeed = 0
+    }
+}

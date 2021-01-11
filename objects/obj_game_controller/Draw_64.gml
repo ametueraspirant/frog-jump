@@ -13,6 +13,8 @@ if(debug_on) {
 	draw_text_transformed(20, 180, "vsp: " + string(obj_frog.state.vsp), 2, 2, 0);
 	draw_text_transformed(20, 200, "id: " + string(obj_frog.state.platid), 2, 2, 0);
 	draw_text_transformed(20, 220, "state: " + string(obj_frog.state.str), 2, 2, 0);
+    draw_text_transformed(20, 240, "global.height: " + string(global.height), 2, 2, 0);
+    draw_text_transformed(20, 260, "global.next_height: " + string(global.next_height), 2, 2, 0);
 	if(m_held) {
 		draw_line_width_colour(obj_frog.state.msavx, obj_frog.state.msavy, mouse_x, mouse_y, 5, c_orange, c_green); //testing line
 		draw_circle_color(obj_frog.state.msavx, obj_frog.state.msavy, obj_frog.max_length, c_orange, c_green, true)
