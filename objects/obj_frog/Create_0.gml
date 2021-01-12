@@ -9,7 +9,7 @@ base = { // store base stats like gravity and friction to call later.
 	},
 	fric: { // friction
 		air: 0.2, // friction while in air
-		plat: 0.7, // friction while on platforms
+		plat: 2.2, // friction while on platforms
 		spd: 10
 	},
 	timer: {

@@ -36,24 +36,46 @@ if(m_up) {
 }
 
 // if the frog is landed and also too high.
-//if(state.str == "idle" && y <= 1500) {
-//	y = lerp(y, 1500, 0.1); // move frog.
-//	obj_collider_parent.y = lerp(y, 1500, 0.1); // and platform.
-//}
-
-if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
-	y += state.vsp;
-	if(state.vsp <= base.grav.spd) {
-		state.vsp += state.grav;
-	}
-} else {
-	while(!place_meeting(x, y + 1, obj_collider_parent)) {
-		y += sign(state.vsp);
-	}
-	state.vsp = 0;
-	state.vspf = 0;
+if(state.str == "idle" && y <= 1500) {
+    var movement = 1500
+	y = lerp(y, movement, 0.1); // move frog.
+    with(obj_collider_parent)
+    y = lerp(y, movement, 0.1); // and platform.
 }
 
+//if state.vsp > 0 and place_meeting(x,y+state.vsp,obj_collider_parent){
+//while(!place_meeting(x,y+1,obj_collider_parent))
+//y += 1
+//state.vsp = 0
+//}
+//else
+//state.vsp += base.grav.fall
+//y += state.vsp
+
+//if state.str == "idle"
+//{
+//    if place_meeting(x,y,obj_collider_parent)
+//        {
+//        var platform = instance_place(x,y,obj_collider_parent)
+//        if y > platform.y
+//        while(place_meeting(x,y,platform)) 
+//        y += -1
+//        }
+//}
+if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
+    if(state.vsp <= base.grav.spd) {
+        state.vsp += state.grav;
+    }
+} else {
+    if(state.vsp > 0) {
+        while(!place_meeting(x, y + sign(state.vsp), obj_collider_parent)) {
+            y += sign(state.vsp);
+        }
+        state.vsp = 0;
+        state.vspf = 0;
+    }
+}
+y += state.vsp
 x -= state.hsp;
 
 if(x < 0 || x > room_width) {
@@ -93,6 +115,7 @@ switch(state.str) {
 	case "idle":
 	#region // idle
     image_index = 0
+    state.vsp = 0
 	state.fric = base.fric.plat;
 	if(m_down) { // if click, windup.
 		state.str = "windup";
@@ -122,7 +145,7 @@ switch(state.str) {
 	break;
 }
 if instance_exists(obj_platform){
-    if state.str == "rising"{
+    if state.str == "rising" or state.str == "falling"{
         obj_platform.vspeed = -obj_frog.state.vsp
     }
     else{
