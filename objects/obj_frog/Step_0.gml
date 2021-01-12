@@ -36,25 +36,27 @@ if(m_up) {
 }
 
 // if the frog is landed and also too high.
-if(state.str == "idle" && y <= 1500) {
-	y = lerp(y, 1500, 0.1); // move frog.
-	obj_collider_parent.y = lerp(y, 1500, 0.1); // and platform.
-}
+//if(state.str == "idle" && y <= 1500) {
+//	y = lerp(y, 1500, 0.1); // move frog.
+//	obj_collider_parent.y = lerp(y, 1500, 0.1); // and platform.
+//}
 
 if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
-	y += state.vsp;
 	if(state.vsp <= base.grav.spd) {
 		state.vsp += state.grav;
 	}
 } else {
-	if(!place_meeting(x, y + 1, obj_collider_parent)) {
-		y += state.vsp;
+	if(state.vsp > 0) {
+		while(!place_meeting(x, y + sign(state.vsp), obj_collider_parent)) {
+			y += sign(state.vsp);
+		}
+		state.vsp = 0;
+		state.vspf = 0;
 	}
-	state.vsp = 0;
-	state.vspf = 0;
 }
 
 x -= state.hsp;
+y += state.vsp;
 
 if(x < 0 || x > room_width) {
 	state.hsp = -state.hsp;
