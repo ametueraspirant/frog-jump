@@ -35,6 +35,16 @@ if(m_up) {
 	}
 }
 
+// this is test code, replace with code below when it works.
+if instance_exists(obj_platform){
+    if state.str == "rising" or state.str == "falling"{
+        obj_platform.vspeed = -obj_frog.state.vsp
+    }
+    else{
+    obj_platform.vspeed = 0
+    }
+}
+
 // if the frog is landed and also too high.
 //if(state.str == "idle" && y <= 1500) {
 //	y = lerp(y, 1500, 0.1); // move frog.
@@ -122,12 +132,4 @@ switch(state.str) {
 	
 	#endregion
 	break;
-}
-if instance_exists(obj_platform){
-    if state.str == "rising" or state.str == "falling"{
-        obj_platform.vspeed = -obj_frog.state.vsp
-    }
-    else{
-    obj_platform.vspeed = 0
-    }
 }
