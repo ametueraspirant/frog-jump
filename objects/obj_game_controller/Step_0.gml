@@ -29,7 +29,11 @@ switch(_game_state) {
 	break;
 	
 	case "go":
-		
+        if global.height >= global.next_height and global.spawn_platforms == true{
+    		global.next_height = global.height + 10
+            global.spawn_platforms = false
+            test_spawn_platforms()
+        }
 	break;
 	case "stats":
 	

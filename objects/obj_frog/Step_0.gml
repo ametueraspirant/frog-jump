@@ -41,6 +41,25 @@ if(m_up) {
 //	obj_collider_parent.y = lerp(y, 1500, 0.1); // and platform.
 //}
 
+//if state.vsp > 0 and place_meeting(x,y+state.vsp,obj_collider_parent){
+//while(!place_meeting(x,y+1,obj_collider_parent))
+//y += 1
+//state.vsp = 0
+//}
+//else
+//state.vsp += base.grav.fall
+//y += state.vsp
+
+//if state.str == "idle"
+//{
+//    if place_meeting(x,y,obj_collider_parent)
+//        {
+//        var platform = instance_place(x,y,obj_collider_parent)
+//        if y > platform.y
+//        while(place_meeting(x,y,platform)) 
+//        y += -1
+//        }
+//}
 if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
 	if(state.vsp <= base.grav.spd) {
 		state.vsp += state.grav;
@@ -54,7 +73,7 @@ if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
 		state.vspf = 0;
 	}
 }
-
+y += state.vsp
 x -= state.hsp;
 y += state.vsp;
 
@@ -67,6 +86,7 @@ if(x < 0 || x > room_width) {
 switch(state.str) {
 	case "rising":
 	#region // rising
+    global.height += 1
     image_index = 2
 	state.grav = base.grav.rise;
 	state.fric = base.fric.air;
@@ -94,6 +114,7 @@ switch(state.str) {
 	case "idle":
 	#region // idle
     image_index = 0
+    state.vsp = 0
 	state.fric = base.fric.plat;
 	if(m_down) { // if click, windup.
 		state.str = "windup";
@@ -122,4 +143,11 @@ switch(state.str) {
 	#endregion
 	break;
 }
-
+if instance_exists(obj_platform){
+    if state.str == "rising" or state.str == "falling"{
+        obj_platform.vspeed = -obj_frog.state.vsp
+    }
+    else{
+    obj_platform.vspeed = 0
+    }
+}
