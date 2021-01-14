@@ -29,27 +29,19 @@ if(m_held) {
 // on mouse up
 if(m_up) {
 	// if vertical impulse is not too weak and not upwards.
-	if(state.vimp <= -3 && (state.str == "windup")) {
+	if(state.vimp <= -15 && (state.str == "windup")) {
 		state.hsp = state.himp
 		state.vsp = state.vimp
 	}
 }
 
-if(state.str == "idle" && y <= 1500) {
-	var zoom = lerp(y, 1500, 0.1) - y;
-	y += zoom;
-	global.height += zoom;
-	with(obj_collider_parent) {
-		y += zoom;
-	}
-}
-
-if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
+y += state.vsp;
+if(!place_meeting(x, y + 1, obj_collider_parent) || state.str == "rising" || state.str == "falling") {
 	if(state.vsp <= base.grav.spd) {
 		state.vsp += state.grav;
 	}
 } else {
-	if(state.vsp > 0) {
+	if(state.vsp > 0 && bbox_bottom < state.platid.bbox_top) {
 		while(!place_meeting(x, y + sign(state.vsp), obj_collider_parent)) {
 			y += sign(state.vsp);
 		}
@@ -57,19 +49,17 @@ if(!place_meeting(x, y + state.vsp, obj_collider_parent)) {
 		state.vspf = 0;
 	}
 }
-y += state.vsp;
 
+x -= state.hsp;
 if(x < 0 || x > room_width) {
 	state.hsp = -state.hsp;
 	state.hspf = -state.hspf;
 	x += sign(state.dir);
 }
-x -= state.hsp;
 
 switch(state.str) {
 	case "rising":
 	#region // rising
-    global.height += 1
     image_index = 2
 	state.grav = base.grav.rise;
 	state.fric = base.fric.air;
@@ -103,7 +93,30 @@ switch(state.str) {
 		state.str = "windup";
 		break;
 	}
-	// add falling logic here
+	
+	// adds wiggle room by making the frog more "sticky" to platforms.
+	if(place_meeting(x, y, obj_platform_parent)) {
+		y -= bbox_bottom - state.platid.bbox_top;
+		if(x > state.platid.bbox_right) {
+			x = lerp(x, state.platid.bbox_right, 0.1);
+		}
+		if(x < state.platid.bbox_left) {
+			x = lerp(x, state.platid.bbox_left, 0.1);
+		}
+	}
+	if(y <= 1500) {
+		var zoom = lerp(y, 1500, 0.1) - y;
+		y += zoom;
+		global.height += zoom;
+		with(obj_collider_parent) {
+			y += zoom;
+		}
+	}
+	
+	if(!place_meeting(x, y + 1, obj_collider_parent)) {
+		state.str = "falling";
+		break;
+	}
 	#endregion
 	break;
 	case "windup":

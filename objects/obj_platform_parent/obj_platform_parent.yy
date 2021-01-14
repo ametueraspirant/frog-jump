@@ -1,15 +1,12 @@
 {
-  "spriteId": {
-    "name": "spr_branch",
-    "path": "sprites/spr_branch/spr_branch.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_platform_parent",
-    "path": "objects/obj_platform_parent/obj_platform_parent.yy",
+    "name": "obj_collider_parent",
+    "path": "objects/obj_collider_parent/obj_collider_parent.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -27,11 +24,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "entities",
-    "path": "folders/Objects/entities.yy",
+    "name": "system",
+    "path": "folders/Objects/system.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_platform",
+  "name": "obj_platform_parent",
   "tags": [],
   "resourceType": "GMObject",
 }
