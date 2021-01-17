@@ -108,11 +108,11 @@ switch(state.str) {
 	// adds wiggle room by making the frog more "sticky" to platforms.
 	if(place_meeting(x, y, obj_platform_parent)) {
 		y -= bbox_bottom - state.platid.bbox_top;
-		if(x > state.platid.bbox_right) {
-			x = lerp(x, state.platid.bbox_right, 0.1);
+		if(bbox_left > state.platid.bbox_right) {
+			x = lerp(x, state.platid.bbox_right, 0.5);
 		}
-		if(x < state.platid.bbox_left) {
-			x = lerp(x, state.platid.bbox_left, 0.1);
+		if(bbox_right < state.platid.bbox_left) {
+			x = lerp(x, state.platid.bbox_left, 0.5);
 		}
 	}
 	if(y <= 1500) {
