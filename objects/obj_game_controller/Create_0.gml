@@ -1,9 +1,14 @@
 /// @description Init Game
 
-// the big macros
+// main macros for controls
 #macro m_down mouse_check_button_pressed(mb_left)
 #macro m_held mouse_check_button(mb_left)
 #macro m_up mouse_check_button_released(mb_left)
+#macro t_down device_mouse_check_button_pressed(0, mb_left)
+#macro t_held device_mouse_check_button(0, mb_left)
+#macro t_up device_mouse_check_button_released(0, mb_left)
+
+// layer macros
 #macro _main_layer "Instances"
 #macro _player_layer "Player"
 
@@ -19,10 +24,10 @@ b_state = "null"; // this will be called when rendering menu buttons probably.
 
 //Spawn Behavior Variables // testing variables clean up later if I can remember.
 global.height = 0;
-global.amount = 50;
+global.amount = 48;
 global.behavior = 0;
 global.next_height = global.height + global.amount
-
+global.spawn_platforms = true
 
 // contain the set of x + y coordinates and objects to spawn at each coordinate to be called with the menu_render function.
 menu_arrays = {

@@ -4,14 +4,7 @@
 
 switch(_game_state) {
 	case "menu":
-	switch(_menu_state) {
-		case "main":
-		
-		break;
-		default:
-		show_debug_message("sorry that's not a menu I can find");
-		break;
-	}
+	if(!instance_exists(obj_menu_controller))instance_create_layer(0, 0, _main_layer, obj_menu_controller);
 	break;
 	case "prep":
 	if(!instance_exists(obj_frog)) {
@@ -29,7 +22,11 @@ switch(_game_state) {
 	break;
 	
 	case "go":
-		
+        if global.height >= global.next_height and global.spawn_platforms == true{
+    		global.next_height = global.height + 10
+            global.spawn_platforms = false
+            test_spawn_platforms()
+        }
 	break;
 	case "stats":
 	
