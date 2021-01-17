@@ -1,9 +1,14 @@
 /// @description Init Game
 
-// the big macros
+// main macros for controls
 #macro m_down mouse_check_button_pressed(mb_left)
 #macro m_held mouse_check_button(mb_left)
 #macro m_up mouse_check_button_released(mb_left)
+#macro t_down device_mouse_check_button_pressed(0, mb_left)
+#macro t_held device_mouse_check_button(0, mb_left)
+#macro t_up device_mouse_check_button_released(0, mb_left)
+
+// layer macros
 #macro _main_layer "Instances"
 #macro _player_layer "Player"
 

@@ -1,5 +1,16 @@
 /// @description Move Frog
 
+// check os type and set proper variables
+if(os_type == os_android || os_type == os_ios) {
+	var i_down = m_down;
+	var i_held = m_held;
+	var i_up = m_up;
+} else {
+	var i_down = t_down;
+	var i_held = t_held;
+	var i_up = t_up;
+}
+
 state = increment_fractions(state); // increment fractions code makes sure frog always moving at incremental speeds.
 		
 if(get_id() != noone)state.platid = get_id(); // checks every frame for a nearby platform in the jump path of the frog and gets the id.
@@ -13,13 +24,13 @@ if(abs(state.hsp) <= 1 && state.str == "idle")state.hsp = 0 && state.hspf = 0; /
 else state.hsp -= state.fric * state.dir * abs(state.hsp/base.fric.spd);
 
 // on mouse click, save first position.
-if(m_down) {
+if(i_down) {
 	state.msavx = mouse_x;
 	state.msavy = mouse_y;
 }
 
 // on mouse held, show the jump arc prediction line.
-if(m_held) {
+if(i_held) {
 	line.len = point_distance(state.msavx, state.msavy, mouse_x, mouse_y); 
 	line.ang = point_direction(state.msavx, state.msavy, mouse_x, mouse_y);
 	state.himp = (min(max_length, line.len) * dcos(line.ang)) / (max_length / base.jumpstr);
@@ -27,7 +38,7 @@ if(m_held) {
 }
 
 // on mouse up
-if(m_up) {
+if(i_up) {
 	// if vertical impulse is not too weak and not upwards.
 	if(state.vimp <= -15 && (state.str == "windup")) {
 		state.hsp = state.himp
@@ -89,7 +100,7 @@ switch(state.str) {
     image_index = 0
     state.vsp = 0
 	state.fric = base.fric.plat;
-	if(m_down) { // if click, windup.
+	if(i_down) { // if click, windup.
 		state.str = "windup";
 		break;
 	}
@@ -126,7 +137,7 @@ switch(state.str) {
 		state.str = "rising"; // if go up, rising.
 		break;
 	}
-	if(m_up) {
+	if(i_up) {
 		state.str = "idle"; // if let go, idle.
 		break;
 	}
