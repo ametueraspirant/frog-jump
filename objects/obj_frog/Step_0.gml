@@ -36,7 +36,7 @@ if(m_up) {
 }
 
 y += state.vsp;
-if(!place_meeting(x, y + 1, obj_collider_parent) || state.str == "rising" || state.str == "falling") {
+if(!place_meeting(x, y + 1, obj_collider_parent) || state.str != "idle" || state.str != "windup") {
 	if(state.vsp <= base.grav.spd) {
 		state.vsp += state.grav;
 	}
