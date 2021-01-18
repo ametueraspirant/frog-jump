@@ -1,3 +1,12 @@
-function menu_transition(_dir) {
+/// @arg direction
+/// @arg new_menu
+function menu_transition(_dir, _new) {
 	
 }
+
+function start_game() {
+	_menu_state = "closed";
+	menu_transition("right");
+	_game_state = "prep";
+}
+
