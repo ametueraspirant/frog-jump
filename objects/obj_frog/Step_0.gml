@@ -68,6 +68,15 @@ if(x < 0 || x > room_width) {
 	x += sign(state.dir);
 }
 
+if(y <= 1500 && (state.str == "idle" || state.str == "windup")) {
+		var zoom = lerp(y, 1500, 0.1) - y;
+		y += zoom;
+	    obj_game_controller.height += zoom;
+		with(obj_collider_parent) {
+			y += zoom;
+		}
+	}
+
 switch(state.str) {
 	case "rising":
 	#region // rising
@@ -115,15 +124,6 @@ switch(state.str) {
 			x = lerp(x, state.platid.bbox_left, 0.5);
 		}
 	}
-	if(y <= 1500) {
-		var zoom = lerp(y, 1500, 0.1) - y;
-		y += zoom;
-	    obj_game_controller.height += zoom;
-		with(obj_collider_parent) {
-			y += zoom;
-		}
-	}
-	
 	if(!place_meeting(x, y + 1, obj_collider_parent)) {
 		state.str = "falling";
 		break;
