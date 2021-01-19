@@ -16,17 +16,20 @@ switch(_game_state) {
 			obj_ground
 			)
 		}
-		instance_create_layer(room_width/2, room_height - _ground_height * 2, _player_layer, obj_frog);
-	}
+		instance_create_layer(room_width/2, room_height - _ground_height, _player_layer, obj_frog);  
+        for(i = 200; i < room_height; i += room_height/4){
+            spawn_platforms(i,i-300);
+        }
+    }
 	_game_state = "go";
 	break;
 	
 	case "go":
-        if global.height >= global.next_height and global.spawn_platforms == true{
-    		global.next_height = global.height + 10
-            global.spawn_platforms = false
-            test_spawn_platforms()
+        if(height >= next_height){
+            next_height += amount;
+            spawn_platforms(-20, -amount);        
         }
+
 	break;
 	case "stats":
 	

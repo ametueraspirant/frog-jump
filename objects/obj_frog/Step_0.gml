@@ -118,7 +118,7 @@ switch(state.str) {
 	if(y <= 1500) {
 		var zoom = lerp(y, 1500, 0.1) - y;
 		y += zoom;
-		global.height += zoom;
+	    obj_game_controller.height += zoom;
 		with(obj_collider_parent) {
 			y += zoom;
 		}
