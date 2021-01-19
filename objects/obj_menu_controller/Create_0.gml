@@ -10,7 +10,7 @@ enum element_type {
 	slider,
 	toggle
 }
-
+	
 global.settings = {
 	vol: {
 		master: 100,
@@ -25,5 +25,11 @@ global.settings = {
 };
 
 main_menu = [
-	["Play", element_type.run_script, start_game()]
+	["Play", element_type.run_script, start_game]
 ];
+
+for(men = 0; men < main_menu.length; men++) {
+	if(main_menu[men][1] == element_type.run_script) {
+		run_script(main_menu[men][3]);
+	}
+}
