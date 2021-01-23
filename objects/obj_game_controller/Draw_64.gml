@@ -1,5 +1,5 @@
 /// @description Draw Debug Messages
-
+draw_set_font(kenney_thick);
 //draw_text(50, 50, string());
 if(debug_on) {
 	draw_text_transformed(20, 20, "horizontal Impulse: " + string(obj_frog.state.himp), 2, 2, 0);
