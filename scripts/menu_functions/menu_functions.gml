@@ -13,3 +13,7 @@ function start_game() {
 function run_script(_scr) {
 	_scr();
 }
+
+function draw_menu() {
+	
+}
