@@ -28,6 +28,7 @@ switch(_game_state) {
         if(height >= next_height){
             next_height += amount;
             spawn_platforms(-20, -amount);        
+            check_snake_spawn();
         }
 
 	break;
