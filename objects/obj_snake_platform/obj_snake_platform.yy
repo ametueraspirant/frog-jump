@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_snake",
-    "path": "sprites/spr_snake/spr_snake.yy",
+    "name": "spr_snake_platform",
+    "path": "sprites/spr_snake_platform/spr_snake_platform.yy",
   },
   "solid": false,
   "visible": true,
@@ -23,7 +23,10 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"obj_snake_platform","path":"objects/obj_snake_platform/obj_snake_platform.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"obj_snake_platform","path":"objects/obj_snake_platform/obj_snake_platform.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -31,7 +34,7 @@
     "path": "folders/Objects/entities.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_snake",
+  "name": "obj_snake_platform",
   "tags": [],
   "resourceType": "GMObject",
 }

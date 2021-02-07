@@ -27,10 +27,8 @@ switch(_game_state) {
 	case "go":
         if(height >= next_height){
             next_height += amount;
-            spawn_platforms(-20, -amount);        
-            check_snake_spawn();
+            spawn_platforms(-20, -amount);
         }
-
 	break;
 	case "stats":
 	
