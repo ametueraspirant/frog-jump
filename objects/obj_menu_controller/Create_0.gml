@@ -26,4 +26,8 @@ global.settings = {
 
 global.menu = {
 	
+	
+	arr: [
+		
+	]
 };
