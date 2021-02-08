@@ -10,6 +10,14 @@ function start_game() {
 	_game_state = "prep";
 }
 
+function resume_game() {
+	
+}
+
+function exit_game() {
+	
+}
+
 function run_script(_scr) {
 	_scr();
 }
