@@ -13,3 +13,17 @@ function check_snake_spawn(_x, _y){
         }
     }
 }
+
+function check_monkey_spawn(_x, _y){
+    var max_success = 35
+    var success = irandom_range(1,max_success)
+    //Check if snake spawns
+    if(monkey_chance >= success){
+        monkey_chance = 1
+        instance_create_layer(_x, _y, _main_layer, obj_monkey_platform)
+    }else{
+        if(monkey_chance != max_success){
+            monkey_chance += monkey_chance_incre
+        }
+    }
+}

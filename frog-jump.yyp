@@ -39,6 +39,7 @@
     {"id":{"name":"obj_collider_parent","path":"objects/obj_collider_parent/obj_collider_parent.yy",},"order":2,},
     {"id":{"name":"spr_back","path":"sprites/spr_back/spr_back.yy",},"order":6,},
     {"id":{"name":"froggy_functions","path":"scripts/froggy_functions/froggy_functions.yy",},"order":0,},
+    {"id":{"name":"obj_monkey_platform","path":"objects/obj_monkey_platform/obj_monkey_platform.yy",},"order":5,},
     {"id":{"name":"spr_button_lon_gre_test","path":"sprites/spr_button_lon_gre_test/spr_button_lon_gre_test.yy",},"order":8,},
     {"id":{"name":"spr_snake_platform","path":"sprites/spr_snake_platform/spr_snake_platform.yy",},"order":7,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
