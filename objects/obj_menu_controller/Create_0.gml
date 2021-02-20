@@ -27,9 +27,9 @@ global.settings = {
 menu = {
 	stat: {mx: 50, my: 100, curr_menu: "main"},
 	main: [
-		["play", mx + 50, my + 50, false, element_type.page_transition, "maps"],
-		["options", mx + 50, my + 100, false, element_type.page_transition, "options"],
-		["exit", mx + 50, my + 100, false, element_type.run_script, game_end]
+		["play", 50, 50, false, element_type.page_transition, "maps"],
+		["options", 50, 100, false, element_type.page_transition, "options"],
+		["exit", 50, 150, false, element_type.run_script, game_end]
 	],
 	options: [
 		["music", 0, 0, false, element_type.slider, 100],
