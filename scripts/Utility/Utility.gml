@@ -1,6 +1,6 @@
 /// How 2 Use
 /// all inputs are structs.
-/// _state must contain a hs and vs variable, corresponding to the entitiy's current horizontal and vertical speed.
+/// _state must contain a hsp and vsp variable, corresponding to the entitiy's current horizontal and vertical speed.
 /// _state must also contain the variables hspf and vspf, to store fractional speeds until the next moment that the script is called.
 /// Thanks to Zen00 and Sahaun for helping with this code
 function increment_fractions(_state) {
