@@ -25,7 +25,7 @@ function run_script(_scr) {
 
 function draw_menu(_menu) {
 	for(var butt = 0; butt < _menu.length; butt++) {
-		var cenu = _menu[butt]; // short for current menu obviously
-		draw_sprite_stretched(cenu[], cenu[].image_index, cenu[], cenu[], cenu[], cenu[]);
+		// var cenu = _menu[butt]; // short for current menu obviously
+		// draw_sprite_stretched(cenu[], cenu[].image_index, cenu[], cenu[], cenu[], cenu[]);
 	}
 }

@@ -2,7 +2,7 @@
 
 // which menu page is the player on
 m_state = "main"; // this will be set to the string main, options, and stats, to determine where the menu is.
-#macro _menu_state obj_game_controller.m_state
+#macro _menu_state obj_menu_controller.m_state
 
 enum element_type {
 	run_script,
