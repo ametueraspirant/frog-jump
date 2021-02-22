@@ -1,9 +1,5 @@
 /// @description Init Menus
 
-// which menu page is the player on
-m_state = "main"; // this will be set to the string main, options, and stats, to determine where the menu is.
-#macro _menu_state obj_menu_controller.m_state
-
 enum element_type {
 	run_script,
 	page_transition,
@@ -25,11 +21,11 @@ global.settings = {
 
 // button structure: ["button_name_str", button_x, button_y, is_selected, element_type, element_function]
 menu = {
-	stat: {mx: 50, my: 100, curr_menu: "main"},
+	stat: {mx: 50, my: 100, curr_menu: []},
 	main: [
-		["play", 50, 50, false, element_type.page_transition, "maps"],
-		["options", 50, 100, false, element_type.page_transition, "options"],
-		["exit", 50, 150, false, element_type.run_script, game_end]
+		["play", spr_button_sho_bro_test, 50, 50, false, element_type.page_transition, "maps"],
+		["options", spr_button_sho_bro_test, 50, 100, false, element_type.page_transition, "options"],
+		["exit", spr_button_sho_bro_test, 50, 150, false, element_type.run_script, game_end]
 	],
 	options: [
 		["music", 0, 0, false, element_type.slider, 100],
