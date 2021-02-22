@@ -30,7 +30,8 @@ function draw_menu(_menu) {
 	if(array_length(_cenu) > 0) {
 		for(var butt = 0; butt < array_length(_cenu); butt++) {
 			var _ton = _cenu[butt]
-			draw_sprite_stretched(_ton[1], 0, _ton[2] + _x, _ton[3] + _y, 1, 1);
+			draw_sprite_stretched(_ton[1], 0, _ton[2] + _x, _ton[3] + _y, sprite_get_width(_ton[1]), sprite_get_width(_ton[1]));
+			draw_text(_ton[2] + _x, _ton[3] + _y, _ton[0]);
 		}
 	}
 }
