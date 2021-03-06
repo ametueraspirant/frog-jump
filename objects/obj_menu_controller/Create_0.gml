@@ -45,7 +45,7 @@ menu = {
 			var i_down = t_down;
 			var i_held = t_held;
 			var i_up = t_up;
-		}
+		};
 		var _c_menu = stat.curr_menu; // current menu
 		var _x = stat.mx; // menu start x
 		var _y = stat.my; // menu start y
