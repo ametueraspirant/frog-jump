@@ -22,12 +22,12 @@ global.settings = {
 menu = {
 	stat: {mx: 50, my: 100, curr_menu: []},
 	draw: function() {
-		var _cenu = stat.curr_menu; // short for current menu, duh obviously...
+		var _c_menu = stat.curr_menu; // short for current menu, duh obviously...
 		var _x = stat.mx; // menu start x
 		var _y = stat.my; // menu start y
-		if(array_length(_cenu) > 0) {
-			for(var butt = 0; butt < array_length(_cenu); butt++) {
-				var _ton = _cenu[butt]; // current button
+		if(array_length(_c_menu) > 0) {
+			for(var butt = 0; butt < array_length(_c_menu); butt++) {
+				var _ton = _c_menu[butt]; // current button
 				var _w = sprite_get_width(_ton[1]); // width of the current sprite
 				var _h = sprite_get_height(_ton[1]); // height of the current sprite
 				draw_sprite_stretched(_ton[1], 0, _ton[2] + _x, _ton[3] + _y,  _w * 4, _h);
@@ -36,11 +36,33 @@ menu = {
 		}
 	},
 	step: function() {
-		/*if(collision_rectangle()) {
-			
-		};*/
-		if(m_down) {
-			
+		// check os type and set proper variables
+		if(os_type == os_android || os_type == os_ios) {
+			var i_down = m_down;
+			var i_held = m_held;
+			var i_up = m_up;
+		} else {
+			var i_down = t_down;
+			var i_held = t_held;
+			var i_up = t_up;
+		}
+		var _c_menu = stat.curr_menu; // current menu
+		var _x = stat.mx; // menu start x
+		var _y = stat.my; // menu start y
+		if(array_length(_c_menu) > 0) {
+			for(var clic = 0; clic < array_length; clic++) {
+				var _k = _c_menu[clic]; // current button
+				var _w = sprite_get_width(_ton[1]); // width of the current sprite
+				var _h = sprite_get_height(_ton[1]); // height of the current sprite
+				if(point_in_rectangle(device_mouse_x(0), device_mouse_y(0), _x + _k[2], _y + _k[3], _x + _k[2] + _w, _x + _k[3] + _h)) {
+					_k[4] = true;
+				} else {
+					_k[4] = false;
+				}
+				if(i_up && _k[4]) {
+					
+				}
+			};
 		};
 	},
 	main: [
