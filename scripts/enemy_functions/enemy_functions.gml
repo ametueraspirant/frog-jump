@@ -20,7 +20,7 @@ function check_monkey_spawn(_x, _y){
     //Check if snake spawns
     if(monkey_chance >= success){
         monkey_chance = 1
-        instance_create_layer(_x, _y, _main_layer, obj_monkey_platform)
+        instance_create_layer(_x, _y, _main_layer, obj_monkey_spawn)
     }else{
         if(monkey_chance != max_success){
             monkey_chance += monkey_chance_incre

@@ -31,6 +31,7 @@ snake_chance = 1
 snake_chance_incre = 1
 monkey_chance = 1
 monkey_chance_incre = 1
+spawn_monkey = true
 bird_chance = 1
 bird_chance_incre = 1
 

@@ -29,6 +29,15 @@ switch(_game_state) {
             next_height += amount;
             spawn_platforms(-20, -amount);
         }
+        if (instance_exists(obj_frog)){
+            if (obj_frog.state.str == "idle" && spawn_monkey == true){
+                spawn_monkey = false
+                check_monkey_spawn(0, -100)
+            }
+            if (obj_frog.state.str == "falling"){
+                spawn_monkey = true
+            }
+        }
 	break;
 	case "stats":
 	

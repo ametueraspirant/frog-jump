@@ -55,7 +55,7 @@ function spawn_platforms(r1, r2){
         var platform = instance_create_layer(horz_spawn_range, vert_spawn_range, _main_layer, platform_type)
         if(instance_exists(platform)){
             check_snake_spawn(platform.x, platform.y);
-            check_monkey_spawn(platform.x, platform.y);
+            //check_monkey_spawn(platform.x, platform.y);
         }
         if collision_circle(platform.x,platform.y,horz_spawn_range*2,obj_platform,0,1)
             {

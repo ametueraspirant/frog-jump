@@ -39,6 +39,9 @@ if(i_held) {
 
 // on mouse up
 if(i_up) {
+    //Play jump sound
+    var jump = audio_play_sound(snd_jump,0,0);
+    audio_sound_pitch(jump, random_range(0.4, 1.6))
 	// if vertical impulse is not too weak and not upwards.
 	if(state.vimp <= -15 && (state.str == "windup")) {
 		state.hsp = state.himp
