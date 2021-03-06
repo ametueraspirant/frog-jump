@@ -26,6 +26,15 @@ amount = 375;
 behavior = 0;
 next_height = 0
 
+//Enemy Behavior Variables
+snake_chance = 1
+snake_chance_incre = 1
+monkey_chance = 1
+monkey_chance_incre = 1
+spawn_monkey = true
+bird_chance = 1
+bird_chance_incre = 1
+
 // contain the set of x + y coordinates and objects to spawn at each coordinate to be called with the menu_render function.
 menu_arrays = {
 	main: [
