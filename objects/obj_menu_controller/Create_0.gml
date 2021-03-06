@@ -10,8 +10,8 @@ enum element_type {
 	
 global.settings = {
 	vol: {
-		audio: 100,
-		music: 100
+		audio: 1,
+		music: 1
 	},
 	lang: "english",
 	notif: false,
