@@ -35,18 +35,6 @@ spawn_monkey = true
 bird_chance = 1
 bird_chance_incre = 1
 
-// contain the set of x + y coordinates and objects to spawn at each coordinate to be called with the menu_render function.
-menu_arrays = {
-	main: [
-		/* ex:
-		[50, 50, obj_options, "options"],
-		[200, 560, obj_button_play, "Start!"]
-		*/
-	],
-	options: [],
-	stats: []
-};
-
 instance_create_layer(0, 0, _main_layer, obj_game_camera);
 
 debug_on = 0; // delete on release, debug mode.

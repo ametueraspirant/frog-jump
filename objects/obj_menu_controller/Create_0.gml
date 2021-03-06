@@ -36,9 +36,9 @@ menu = {
 		}
 	},
 	step: function() {
-		if(collision_rectangle()) {
+		/*if(collision_rectangle()) {
 			
-		};
+		};*/
 		if(m_down) {
 			
 		};
