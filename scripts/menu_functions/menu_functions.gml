@@ -1,7 +1,24 @@
-function menu_render(_arr) {
+/// @arg direction
+/// @arg new_menu
+function menu_transition(_dir, _new) {
+	
+	menu.stat.curr_menu = _new;
+}
+
+function start_game() {
+	menu_transition("right", "closed");
+	_game_state = "prep";
+}
+
+function resume_game() {
+	menu_transition("left", "closed");
+	_game_state = "go";
+}
+
+function exit_game() {
 	
 }
 
-function menu_transition(_dir) {
-	
+function run_script(_scr) {
+	_scr();
 }

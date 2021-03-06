@@ -39,6 +39,9 @@ if(i_held) {
 
 // on mouse up
 if(i_up) {
+    //Play jump sound
+    var jump = audio_play_sound(snd_jump,0,0);
+    audio_sound_pitch(jump, random_range(0.4, 1.6))
 	// if vertical impulse is not too weak and not upwards.
 	if(state.vimp <= -15 && (state.str == "windup")) {
 		state.hsp = state.himp
@@ -67,6 +70,14 @@ if(x < 0 || x > room_width) {
 	state.hspf = -state.hspf;
 	x += sign(state.dir);
 }
+
+if(y <= 1500 && (state.str == "idle" || state.str == "windup")) {
+		var zoom = lerp(y, 1500, 0.1) - y;
+		y += zoom;
+	    obj_game_controller.height += zoom;
+		with(obj_collider_parent) y += zoom;
+        with(obj_entity_parent) y += zoom;
+	}
 
 switch(state.str) {
 	case "rising":
@@ -115,15 +126,6 @@ switch(state.str) {
 			x = lerp(x, state.platid.bbox_left, 0.5);
 		}
 	}
-	if(y <= 1500) {
-		var zoom = lerp(y, 1500, 0.1) - y;
-		y += zoom;
-	    obj_game_controller.height += zoom;
-		with(obj_collider_parent) {
-			y += zoom;
-		}
-	}
-	
 	if(!place_meeting(x, y + 1, obj_collider_parent)) {
 		state.str = "falling";
 		break;

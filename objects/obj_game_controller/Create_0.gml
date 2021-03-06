@@ -13,13 +13,11 @@
 #macro _player_layer "Player"
 
 // main game states
-g_state = "prep"; // this will be set to the string menu, prep, go, death, and scores, and called by other objects.
-m_state = "main"; // this will be set to the string main, options, and stats, to determine where the menu is.
+g_state = "menu"; // this will be set to the string intro, menu, prep, go, death, and scores, and called by other objects.
 b_state = "null"; // this will be called when rendering menu buttons probably.
 
 // turned into macros for easy global access
 #macro _game_state obj_game_controller.g_state
-#macro _menu_state obj_game_controller.m_state
 #macro _button_state obj_game_controller.b_state
 
 //Spawn Behavior Variables // testing variables clean up later if I can remember.
@@ -28,17 +26,14 @@ amount = 375;
 behavior = 0;
 next_height = 0
 
-// contain the set of x + y coordinates and objects to spawn at each coordinate to be called with the menu_render function.
-menu_arrays = {
-	main: [
-		/* ex:
-		[50, 50, obj_options, "options"],
-		[200, 560, obj_button_play, "Start!"]
-		*/
-	],
-	options: [],
-	stats: []
-};
+//Enemy Behavior Variables
+snake_chance = 1
+snake_chance_incre = 1
+monkey_chance = 1
+monkey_chance_incre = 1
+spawn_monkey = true
+bird_chance = 1
+bird_chance_incre = 1
 
 instance_create_layer(0, 0, _main_layer, obj_game_camera);
 
