@@ -18,7 +18,7 @@ global.settings = {
 	tutorial: true
 };
 
-// button structure: ["button_name_str", button_x, button_y, is_selected, element_type, element_function]
+// button structure: TBD
 menu = {
 	stat: {mx: 50, my: 100, curr_menu: []},
 	draw: function() {
