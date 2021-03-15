@@ -59,8 +59,13 @@ menu = {
 				} else {
 					_k[4] = false;
 				}
-				if(i_up && _k[4]) {
-					
+				if(_k[4]) {
+					if(i_down) {
+						
+					}
+					if(i_up) {
+						
+					}
 				}
 			};
 		};
