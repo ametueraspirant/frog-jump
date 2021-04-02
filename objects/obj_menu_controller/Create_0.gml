@@ -50,7 +50,7 @@ menu = {
 		var _x = stat.mx; // menu start x
 		var _y = stat.my; // menu start y
 		if(array_length(_c_menu) > 0) {
-			for(var int = 0; int < array_length; int++) {
+			for(var int = 0; int < array_length(_c_menu); int++) {
 				var _arr = _c_menu[int]; // current button
 				var _w = sprite_get_width(_arr[1]); // width of the current sprite
 				var _h = sprite_get_height(_arr[1]); // height of the current sprite
