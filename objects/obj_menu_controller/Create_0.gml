@@ -35,7 +35,7 @@ menu = {
 			}
 		}
 	},
-	step: function() {
+	step: function(_def) {
 		// check os type and set proper variables
 		if(os_type == os_android || os_type == os_ios) {
 			var i_down = m_down;
@@ -64,7 +64,10 @@ menu = {
 						
 					}
 					if(i_up) {
-						
+						switch(_k[5]) {
+							default:
+							break;
+						}
 					}
 				}
 			};

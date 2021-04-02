@@ -4,7 +4,7 @@
 
 switch(_game_state) {
 	case "menu":
-	if(!instance_exists(obj_menu_controller))instance_create_layer(0, 0, _main_layer, obj_menu_controller);
+	
 	break;
 	case "prep":
 	if(!instance_exists(obj_frog)) {

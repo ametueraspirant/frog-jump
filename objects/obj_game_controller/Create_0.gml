@@ -36,5 +36,6 @@ bird_chance = 1
 bird_chance_incre = 1
 
 instance_create_layer(0, 0, _main_layer, obj_game_camera);
+instance_create_layer(0, 0, _main_layer, obj_menu_controller);
 
 debug_on = 0; // delete on release, debug mode.
