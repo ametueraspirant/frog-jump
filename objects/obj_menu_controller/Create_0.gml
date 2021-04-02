@@ -26,12 +26,12 @@ menu = {
 		var _x = stat.mx; // menu start x
 		var _y = stat.my; // menu start y
 		if(array_length(_c_menu) > 0) {
-			for(var butt = 0; butt < array_length(_c_menu); butt++) {
-				var _ton = _c_menu[butt]; // current button
-				var _w = sprite_get_width(_ton[1]); // width of the current sprite
-				var _h = sprite_get_height(_ton[1]); // height of the current sprite
-				draw_sprite_stretched(_ton[1], 0, _ton[2] + _x, _ton[3] + _y,  _w * 4, _h);
-				draw_text(_ton[2] + _w/3 +_x, _ton[3] + _h/3 + _y, _ton[0]);
+			for(var int = 0; int < array_length(_c_menu); int++) {
+				var _arr = _c_menu[int]; // current button
+				var _w = sprite_get_width(_arr[1]); // width of the current sprite
+				var _h = sprite_get_height(_arr[1]); // height of the current sprite
+				draw_sprite_stretched(_arr[1], 0, _arr[2] + _x, _arr[3] + _y,  _w * 4, _h);
+				draw_text(_arr[2] + _w/3 +_x, _arr[3] + _h/3 + _y, _arr[0]);
 			}
 		}
 	},
@@ -50,21 +50,21 @@ menu = {
 		var _x = stat.mx; // menu start x
 		var _y = stat.my; // menu start y
 		if(array_length(_c_menu) > 0) {
-			for(var clic = 0; clic < array_length; clic++) {
-				var _k = _c_menu[clic]; // current button
-				var _w = sprite_get_width(_ton[1]); // width of the current sprite
-				var _h = sprite_get_height(_ton[1]); // height of the current sprite
-				if(point_in_rectangle(device_mouse_x(0), device_mouse_y(0), _x + _k[2], _y + _k[3], _x + _k[2] + _w, _x + _k[3] + _h)) {
-					_k[4] = true;
+			for(var int = 0; int < array_length; int++) {
+				var _arr = _c_menu[int]; // current button
+				var _w = sprite_get_width(_arr[1]); // width of the current sprite
+				var _h = sprite_get_height(_arr[1]); // height of the current sprite
+				if(point_in_rectangle(device_mouse_x(0), device_mouse_y(0), _x + _arr[2], _y + _arr[3], _x + _arr[2] + _w, _x + _arr[3] + _h)) {
+					_arr[4] = true;
 				} else {
-					_k[4] = false;
+					_arr[4] = false;
 				}
-				if(_k[4]) {
+				if(_arr[4]) {
 					if(i_down) {
 						
 					}
 					if(i_up) {
-						switch(_k[5]) {
+						switch(_arr[5]) {
 							default:
 							break;
 						}
@@ -102,3 +102,4 @@ menu = {
 		["underwater", 0, 0, false, element_type.run_script, start_game]
 	]
 };
+menu.stat.curr_menu = menu.main;
