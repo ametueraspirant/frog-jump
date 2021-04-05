@@ -1,3 +1,5 @@
-make sure to fix platform spawning and check all the hitboxes.
+add constructor to make menu buttons
 
-the frog still clips through terrain, stop it doing that.
+put code menu buttons will run within buttons
+
+watch cosmonaut's videos
