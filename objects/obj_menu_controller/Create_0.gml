@@ -35,7 +35,7 @@ menu = {
 			}
 		}
 	},
-	step: function(_def) {
+	step: function() {
 		// check os type and set proper variables
 		if(os_type == os_android || os_type == os_ios) {
 			var i_down = m_down;
