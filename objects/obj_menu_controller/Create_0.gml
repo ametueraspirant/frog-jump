@@ -37,7 +37,7 @@ menu = {
 				var _w = sprite_get_width(_sprite); // width of the current sprite
 				var _h = sprite_get_height(_sprite); // height of the current sprite
 				draw_sprite_stretched(_sprite, 0, _obj._x + _x, _obj._y + _y,  _w * 4, _h);
-				draw_text(_obj[2] + _w/3 +_x, _obj[3] + _h/3 + _y, _obj._name);
+				draw_text(_obj._x + _w/3 +_x, _obj._y + _h/3 + _y, _obj._name);
 			}
 		}
 	},
@@ -91,7 +91,7 @@ menu = {
 	main: [
 		{ // play button
 			_name: "play",
-			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 50,
 			selected: false,
@@ -101,7 +101,7 @@ menu = {
 		},
 		{ // options button
 			_name: "options",
-			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 100,
 			selected: false,
@@ -111,7 +111,7 @@ menu = {
 		},
 		{ // exit button
 			_name: "exit",
-			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 150,
 			selected: false,
@@ -123,7 +123,7 @@ menu = {
 	options: [
 		{ // music slider
 			_name: "music",
-			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 50,
 			selected: false,
@@ -133,7 +133,7 @@ menu = {
 		},
 		{ // sounds slider
 			_name: "sounds",
-			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 100,
 			selected: false,
@@ -143,7 +143,7 @@ menu = {
 		},
 		{ // language array
 			_name: "language",
-			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 150,
 			selected: false,
@@ -153,7 +153,7 @@ menu = {
 		},
 		{ // notifications toggle
 			_name: "notifications",
-			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 200,
 			selected: false,
@@ -163,7 +163,7 @@ menu = {
 		},
 		{ // back button
 			_name: "back",
-			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 250,
 			selected: false,
