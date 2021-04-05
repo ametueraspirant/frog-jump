@@ -26,11 +26,18 @@ menu = {
 		var _y = stat.my; // menu start y
 		if(array_length(_c_menu) > 0) {
 			for(var int = 0; int < array_length(_c_menu); int++) {
-				var _arr = _c_menu[int]; // current button
-				var _w = sprite_get_width(_arr[1]); // width of the current sprite
-				var _h = sprite_get_height(_arr[1]); // height of the current sprite
-				draw_sprite_stretched(_arr[1], 0, _arr[2] + _x, _arr[3] + _y,  _w * 4, _h);
-				draw_text(_arr[2] + _w/3 +_x, _arr[3] + _h/3 + _y, _arr[0]);
+				var _obj = _c_menu[int]; // current button
+				if(!_obj.selected) {
+					var _sprite = _obj.spr.def;
+				} else if(!_obj.pressed) {
+					var _sprite = _obj.spr.hover;
+				} else {
+					var _sprite = _obj.spr.down;
+				}
+				var _w = sprite_get_width(_sprite); // width of the current sprite
+				var _h = sprite_get_height(_sprite); // height of the current sprite
+				draw_sprite_stretched(_sprite, 0, _obj._x + _x, _obj._y + _y,  _w * 4, _h);
+				draw_text(_obj[2] + _w/3 +_x, _obj[3] + _h/3 + _y, _obj._name);
 			}
 		}
 	},
@@ -50,21 +57,29 @@ menu = {
 		var _y = stat.my; // menu start y
 		if(array_length(_c_menu) > 0) {
 			for(var int = 0; int < array_length(_c_menu); int++) {
-				var _arr = _c_menu[int]; // current button
-				var _w = sprite_get_width(_arr[1]); // width of the current sprite
-				var _h = sprite_get_height(_arr[1]); // height of the current sprite
-				if(point_in_rectangle(device_mouse_x(0), device_mouse_y(0), _x + _arr[2], _y + _arr[3], _x + _arr[2] + _w, _x + _arr[3] + _h)) {
-					_arr[4] = true;
+				var _obj = _c_menu[int]; // current button
+				if(!_obj.selected) {
+					var _sprite = _obj.spr.def;
+				} else if(!_obj.pressed) {
+					var _sprite = _obj.spr.hover;
 				} else {
-					_arr[4] = false;
+					var _sprite = _obj.spr.down;
 				}
-				if(_arr[4]) {
+				var _w = sprite_get_width(_sprite); // width of the current sprite
+				var _h = sprite_get_height(_sprite); // height of the current sprite
+				if(point_in_rectangle(device_mouse_x(0), device_mouse_y(0), _x + _obj._x, _y + _obj._y, _x + _obj._x + _w, _x + _obj._y + _h)) {
+					_obj.selected = true;
+				} else {
+					_obj.selected = false;
+				}
+				if(_obj.selected) {
 					if(i_down) {
-						_arr[4] = true;
+						_obj.pressed = true;
 					}
 					if(i_up) {
-						_arr[4] = false;
-						switch(_arr[5]) {
+						_obj.pressed = false;
+						switch(_obj.element) {
+							
 							default:
 							break;
 						}
@@ -75,28 +90,31 @@ menu = {
 	},
 	main: [
 		{ // play button
-			name: "play",
-			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_name: "play",
+			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 50,
+			selected: false,
 			pressed: false,
 			element: e_type.page_transition,
 			destination: "maps"
 		},
 		{ // options button
-			name: "options",
-			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_name: "options",
+			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 100,
+			selected: false,
 			pressed: false,
 			element: e_type.page_transition,
 			destination: "options"
 		},
 		{ // exit button
-			name: "exit",
-			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_name: "exit",
+			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 150,
+			selected: false,
 			pressed: false,
 			element: e_type.run_script,
 			scr: game_end
@@ -104,46 +122,51 @@ menu = {
 	],
 	options: [
 		{ // music slider
-			name: "music",
-			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_name: "music",
+			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 50,
+			selected: false,
 			pressed: false,
 			element: e_type.slider,
 			maximum: 100
 		},
 		{ // sounds slider
-			name: "sounds",
-			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_name: "sounds",
+			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 100,
+			selected: false,
 			pressed: false,
 			element: e_type.slider,
 			maximum: 100
 		},
 		{ // language array
-			name: "language",
-			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_name: "language",
+			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 150,
+			selected: false,
 			pressed: false,
 			element: e_type.array,
 			array: ["english"]
 		},
 		{ // notifications toggle
-			name: "notifications",
-			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_name: "notifications",
+			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 200,
+			selected: false,
 			pressed: false,
 			element: e_type.toggle,
 			status: false
 		},
 		{ // back button
-			name: "back",
-			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_name: "back",
+			spr: { def: spr_button_sho_bro_test hover: spr_button_sho_bro_test, down: "placeholder" },
 			_x: 50,
 			_y: 250,
+			selected: false,
 			pressed: false,
 			element: e_type.page_transition,
 			destination: "main"
