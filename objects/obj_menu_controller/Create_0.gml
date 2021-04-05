@@ -1,6 +1,6 @@
 /// @description Init Menus
 
-enum element_type {
+enum e_type {
 	run_script,
 	page_transition,
 	slider,
@@ -18,7 +18,6 @@ global.settings = {
 	tutorial: true
 };
 
-// button structure: TBD
 menu = {
 	stat: {mx: 50, my: 100, curr_menu: []},
 	draw: function() {
@@ -61,9 +60,10 @@ menu = {
 				}
 				if(_arr[4]) {
 					if(i_down) {
-						
+						_arr[4] = true;
 					}
 					if(i_up) {
+						_arr[4] = false;
 						switch(_arr[5]) {
 							default:
 							break;
@@ -74,32 +74,96 @@ menu = {
 		};
 	},
 	main: [
-		["play", spr_button_sho_bro_test, 50, 50, false, element_type.page_transition, "maps"],
-		["options", spr_button_sho_bro_test, 50, 100, false, element_type.page_transition, "options"],
-		["exit", spr_button_sho_bro_test, 50, 150, false, element_type.run_script, game_end]
+		{ // play button
+			name: "play",
+			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 50,
+			pressed: false,
+			element: e_type.page_transition,
+			destination: "maps"
+		},
+		{ // options button
+			name: "options",
+			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 100,
+			pressed: false,
+			element: e_type.page_transition,
+			destination: "options"
+		},
+		{ // exit button
+			name: "exit",
+			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 150,
+			pressed: false,
+			element: e_type.run_script,
+			scr: game_end
+		},
 	],
 	options: [
-		["music", 0, 0, false, element_type.slider, 100],
-		["sounds", 0, 0, false, element_type.slider, 100],
-		["language", 0, 0, false, element_type.array, ["english"]],
-		["notifications", 0, 0, false, element_type.toggle, false],
-		["back", 0, 0, false, element_type.page_transition, "main"]
+		{ // music slider
+			name: "music",
+			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 50,
+			pressed: false,
+			element: e_type.slider,
+			maximum: 100
+		},
+		{ // sounds slider
+			name: "sounds",
+			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 100,
+			pressed: false,
+			element: e_type.slider,
+			maximum: 100
+		},
+		{ // language array
+			name: "language",
+			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 150,
+			pressed: false,
+			element: e_type.array,
+			array: ["english"]
+		},
+		{ // notifications toggle
+			name: "notifications",
+			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 200,
+			pressed: false,
+			element: e_type.toggle,
+			status: false
+		},
+		{ // back button
+			name: "back",
+			spr: { up: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 250,
+			pressed: false,
+			element: e_type.page_transition,
+			destination: "main"
+		}
 	],
 	ingame: [
-		["music", 0, 0, false, element_type.slider, 100, false],
-		["sounds", 0, 0, false, element_type.slider, 100, false],
-		["language", 0, 0, false, element_type.array, ["english"]],
-		["notifications", 0, 0, false, element_type.toggle, false],
-		["resume", 0, 0, false, element_type.run_script, resume_game],
-		["exit", 0, 0, false, element_type.run_script, exit_game]
+		["music", 0, 0, false, e_type.slider, 100, false],
+		["sounds", 0, 0, false, e_type.slider, 100, false],
+		["language", 0, 0, false, e_type.array, ["english"]],
+		["notifications", 0, 0, false, e_type.toggle, false],
+		["resume", 0, 0, false, e_type.run_script, resume_game],
+		["exit", 0, 0, false, e_type.run_script, exit_game]
 	],
 	maps: [
-		["forest", 0, 0, false, element_type.run_script, start_game],
-		["dunes", 0, 0, false, element_type.run_script, start_game],
-		["mountains", 0, 0, false, element_type.run_script, start_game],
-		["city", 0, 0, false, element_type.run_script, start_game],
-		["space", 0, 0, false, element_type.run_script, start_game],
-		["underwater", 0, 0, false, element_type.run_script, start_game]
+		["forest", 0, 0, false, e_type.run_script, start_game],
+		["dunes", 0, 0, false, e_type.run_script, start_game],
+		["mountains", 0, 0, false, e_type.run_script, start_game],
+		["city", 0, 0, false, e_type.run_script, start_game],
+		["space", 0, 0, false, e_type.run_script, start_game],
+		["underwater", 0, 0, false, e_type.run_script, start_game]
 	]
 };
 menu.stat.curr_menu = menu.main;

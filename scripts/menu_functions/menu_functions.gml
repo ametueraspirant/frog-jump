@@ -15,10 +15,6 @@ function resume_game() {
 	_game_state = "go";
 }
 
-function exit_game() {
-	
-}
-
-function run_script(_scr) {
+function exit_game(scr) {
 	_scr();
 }
