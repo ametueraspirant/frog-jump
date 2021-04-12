@@ -1,5 +1,43 @@
-add constructor to make menu buttons
-
-put code menu buttons will run within buttons
-
 watch cosmonaut's videos
+
+{ // play button
+			_name: "play",
+			spr: { def: spr_button_sho_bro_test, hover: spr_button_sho_bro_test, down: "placeholder" },
+			_x: 50,
+			_y: 50,
+			selected: false,
+			pressed: false,
+			element: e_type.page_transition,
+			destination: "maps"
+		},
+		
+Button = function(name, spr_def, spr_hover, spr_down, x, y, selected, pressed, scr_draw, scr_hover, scr_click) {
+	_name = name;
+	_spr_def = spr_def;
+	_spr_hover = spr_hover == -1 : spr_default ? spr_hover;
+	_spr_down = spr_down == -1 : spr_default ? spr_down;
+	_x = x;
+	_y = y;
+	_selected = selected;
+	_pressed = pressed;
+	_scr_draw = scr_draw;
+	_scr_hover = scr_hover;
+	_scr_click = scr_click;
+}
+
+new Button(
+	"play",
+	spr_button_sho_bro_test, -1, -1,
+	50, 50,
+	false, false,
+	{
+		/* draw code */
+	},
+	{
+		/* hover code */
+	},
+	{
+		/* click code */
+	}
+)
+
