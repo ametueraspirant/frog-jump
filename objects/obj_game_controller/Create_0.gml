@@ -14,11 +14,9 @@
 
 // main game states
 g_state = "menu"; // this will be set to the string intro, menu, prep, go, death, and scores, and called by other objects.
-b_state = "null"; // this will be called when rendering menu buttons probably.
 
 // turned into macros for easy global access
 #macro _game_state obj_game_controller.g_state
-#macro _button_state obj_game_controller.b_state
 
 //Spawn Behavior Variables // testing variables clean up later if I can remember.
 height = 0;
